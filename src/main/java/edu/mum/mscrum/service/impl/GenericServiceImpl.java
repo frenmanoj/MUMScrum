@@ -2,12 +2,19 @@ package edu.mum.mscrum.service.impl;
 
 import java.util.List;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import edu.mum.mscrum.dao.GenericDao;
 import edu.mum.mscrum.service.GenericService;
 
-public class GenericServiceImpl<T> implements GenericService<T> {
+@Transactional
+public abstract class GenericServiceImpl<T> implements GenericService<T> {
 
 	private GenericDao<T> genericDao;
+
+	public GenericServiceImpl() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public GenericServiceImpl(GenericDao<T> genericDao) {
 

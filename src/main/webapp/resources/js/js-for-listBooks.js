@@ -39,7 +39,7 @@ $(document).ready(function() {
 		position : 'center',
 		modal : true,
 		resizable : false,
-		width : 440,
+		width : 460,
 		buttons : {
 			"Save" : function() {
 				$('#bookForm').submit();

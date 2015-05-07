@@ -25,7 +25,7 @@ public class GenericHibernateDao<T> implements GenericDao<T> {
 
 	public T getById(Long id) {
 
-		return (T) getSession().load(getPersistentClass(), id);
+		return (T) getSession().get(getPersistentClass(), id);
 	}
 
 	protected Session getSession() {

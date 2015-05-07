@@ -4,24 +4,29 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import edu.mum.mscrum.dao.BookDao;
-import edu.mum.mscrum.dao.GenericDao;
 import edu.mum.mscrum.model.Book;
 import edu.mum.mscrum.service.BookService;
 
 @Service
+@Transactional
 public class BookServiceImpl extends GenericServiceImpl<Book> implements
 		BookService {
 
 	private BookDao bookDao;
 
+	public BookServiceImpl() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Autowired
-	public BookServiceImpl(GenericDao<Book> genericDao) {
+	public BookServiceImpl(BookDao bookDao) {
 
-		super(genericDao);
+		super(bookDao);
 
-		this.bookDao = (BookDao) genericDao;
+		this.bookDao = (BookDao) bookDao;
 	}
 
 	@Override
