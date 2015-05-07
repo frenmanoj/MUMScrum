@@ -24,7 +24,7 @@ public class BookController {
 	public String listBooks(Map<String, Object> map) {
 
 		map.put("book", new Book());
-		map.put("bookList", bookService.listBooks());
+		map.put("bookList", bookService.listAll());
 
 		return "/book/listBooks";
 	}
@@ -32,7 +32,7 @@ public class BookController {
 	@RequestMapping("/get/{bookId}")
 	public String getBook(@PathVariable Long bookId, Map<String, Object> map) {
 
-		Book book = bookService.getBook(bookId);
+		Book book = bookService.getById(bookId);
 
 		map.put("book", book);
 
@@ -43,7 +43,7 @@ public class BookController {
 	public String saveBook(@ModelAttribute("book") Book book,
 			BindingResult result) {
 
-		bookService.saveBook(book);
+		bookService.save(book);
 
 		/*
 		 * Note that there is no slash "/" right after "redirect:" So, it
@@ -55,7 +55,7 @@ public class BookController {
 	@RequestMapping("/delete/{bookId}")
 	public String deleteBook(@PathVariable("bookId") Long id) {
 
-		bookService.deleteBook(id);
+		bookService.deleteById(id);
 
 		/*
 		 * redirects to the path relative to the current path
