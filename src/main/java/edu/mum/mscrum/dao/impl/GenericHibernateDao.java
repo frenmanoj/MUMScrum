@@ -3,6 +3,7 @@ package edu.mum.mscrum.dao.impl;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +50,8 @@ public class GenericHibernateDao<T> implements GenericDao<T> {
 	@Override
 	public List<T> listAll() {
 
-		return getSession().createCriteria(getPersistentClass()).list();
+		return getSession().createCriteria(getPersistentClass())
+				.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
 	}
 
 	@Override
