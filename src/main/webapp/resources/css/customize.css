@@ -1,0 +1,14 @@
+.form-horizontal .control-label{
+  /* text-align:right; */
+  text-align:left;
+  
+}
+
+#footer {
+    position: absolute;
+    bottom: 1cm;
+    width: 100%;
+    padding-right:550px;
+  
+    
+}
