@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.mum.mscrum.model.ProductBacklog;
 import edu.mum.mscrum.model.UserStory;
@@ -81,9 +82,11 @@ public class ProductBacklogController {
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String saveProductBacklog(
 			@ModelAttribute("productBacklog") ProductBacklog productBacklog,
-			BindingResult result) {
+			BindingResult result, RedirectAttributes redir) {
 
 		productBacklogService.save(productBacklog);
+
+		redir.addFlashAttribute("message", "New product backlog added!!!");
 
 		/*
 		 * Note that there is no slash "/" right after "redirect:" So, it
@@ -112,13 +115,15 @@ public class ProductBacklogController {
 	@RequestMapping(value = "/{productBacklogId}/UserStories/save", method = RequestMethod.POST)
 	public String saveUserStory(@PathVariable("productBacklogId") Long id,
 			@ModelAttribute("userStory") UserStory userStory,
-			BindingResult result) {
+			BindingResult result, RedirectAttributes redir) {
 
 		ProductBacklog productBacklog = productBacklogService.getById(id);
 
 		userStory.setProductBacklog(productBacklog);
 
 		userStoryService.save(userStory);
+
+		redir.addFlashAttribute("message", "New user story added!!!");
 
 		/*
 		 * Note that there is no slash "/" right after "redirect:" So, it

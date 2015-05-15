@@ -32,7 +32,7 @@
 		
 			List Of Product Backlogs
 		
-			<input class="search-box pull-right" placeholder="Search..." />
+			<input class="search-box pull-right" placeholder="Filter..." />
 		</p>
 		
 		<table class="table table-condensed table-striped table-bordered">

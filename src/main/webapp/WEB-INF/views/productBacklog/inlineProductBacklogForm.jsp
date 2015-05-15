@@ -1,11 +1,18 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <form:form class="form-horizontal" action="save" method="post"
 	commandName="productBacklog">
 
 	<fieldset>
 		<legend>Add Product Backlog</legend>
+		
+		<c:if test="${not empty message}">
+		
+		    <div id="message-box" class="alert alert-success" role="alert" style="display:none">${message}</div>
+		
+		</c:if>
+		
 
 		<div class="col-md-3">
 			<label class="control-label" for="title">Title</label> <br>
@@ -27,3 +34,18 @@
 		</div>
 	</fieldset>
 </form:form>
+
+<script>
+
+
+$( document ).ready(function() {
+    
+	if ( $('#message-box') ) {
+		
+		$('#message-box').show(new function(){setTimeout(function(){ $('#message-box').slideUp() }, 4000);});
+
+	}
+
+});
+
+</script>
