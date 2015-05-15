@@ -23,7 +23,7 @@
 		<form:input path="id" type="hidden" />
 
 		<div class="col-sm-6" style="margin-top: 27px;">
-			<input type="submit" name="save" value="Save" class="btn btn-primary" />
+			<input type="submit" name="save" value="Save" class="btn btn-primary" style="width:7em;" />
 		</div>
 	</fieldset>
 </form:form>

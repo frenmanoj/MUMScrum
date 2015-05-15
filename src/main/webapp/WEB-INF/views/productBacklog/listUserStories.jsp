@@ -42,16 +42,21 @@ th {
 		<br>
 		<div style="margin: 0 auto;">
 	
-		<p style="font-size: 21px; color: #333;">List Of User Stories for <b>${productBacklog.title}</b></p>
+		<p style="font-size: 21px; color: #333;">
+			
+			List Of User Stories for <b>${productBacklog.title}</b>
+		
+			<input class="search-box pull-right" placeholder="Filter..." />	
+		</p>
 		<table class="table table-condensed table-striped table-bordered">
 			<thead>
 				<tr>
-					<th width="10%">S.N</th>
+					<th width="5%">S.N</th>
 					<th width="20%">Title</th>
 					<th width="30%">Description</th>
 					<th width="15%">Estimated Hours</th>
 					<th width="15%">Remaining Hours</th>
-					<th width="10%"></th>
+					<th width="15%">Actions</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -64,20 +69,19 @@ th {
 						<td>${userStory.estimatedHours}</td>
 						<td>${userStory.remainingHours}</td>
 						<td><nobr>
-								<button class="btn btn-primary"
+								<button class="btn btn-primary btn-sm"
 									onclick="editUserStory(${userStory.id});">
 
 									<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-									Edit
+									 Edit
 								</button>
 
-								<a class="btn btn-primary"
+								<a class="btn btn-primary btn-sm"
 									onclick="return confirm('Are you sure you want to delete this user story?');"
 									href="delete/${userStory.id}"> <span
 									class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-									Delete
+									 Delete
 								</a>
-
 							</nobr></td>
 					</tr>
 				</c:forEach>
@@ -85,6 +89,8 @@ th {
 		</table>
 
 	</div>
+	
+	<%@ include file="../common/footer.jsp"%>
 
 	<!--  It is advised to put the <script> tags at the end of the document body so they don't block rendering of the page -->
 	<script type="text/javascript"
@@ -95,5 +101,7 @@ th {
 		src='<c:url value="/web-resources/js/lib/jquery.ui.datepicker.js"/>'></script>
 	<script type="text/javascript"
 		src='<c:url value="/web-resources/js/js-for-listUserStories.js"/>'></script>
+	<script type="text/javascript"
+		src='<c:url value="/web-resources/js/common.js"/>'></script>
 </body>
 </html>

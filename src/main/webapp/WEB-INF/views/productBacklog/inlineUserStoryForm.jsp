@@ -1,5 +1,4 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <c:url var="actionUrl" value="UserStories/save" />
@@ -8,7 +7,7 @@
 	commandName="userStory">
 
 	<fieldset>
-		<legend>Add User Story</legend>
+		<legend>Add User Story for <b>${productBacklog.title}</b></legend>
 
 		<div class="col-md-3">
 			<label class="control-label" for="title">Title</label> <br>

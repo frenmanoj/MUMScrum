@@ -28,14 +28,20 @@
 	<br>
 	<div style="margin: 0 auto;">
 
-		<p style="font-size: 21px; color: #333;">List Of Product Backlogs</p>
+		<p style="font-size: 21px; color: #333;">
+		
+			List Of Product Backlogs
+		
+			<input class="search-box pull-right" placeholder="Search..." />
+		</p>
+		
 		<table class="table table-condensed table-striped table-bordered">
 			<thead>
 				<tr>
-					<th width="10%">S.N</th>
+					<th width="5%">S.N</th>
 					<th width="30%">Title</th>
 					<th width="45%">Description</th>
-					<th width="10%" f>Actions</th>
+					<th width="15%">Actions</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -55,7 +61,7 @@
 									Edit
 								</button>
 
-								<a class="btn btn-danger btn-sm"
+								<a class="btn btn-primary btn-sm"
 									onclick="return confirm('Are you sure you want to delete this productBacklog?');"
 									href="delete/${productBacklog.id}"> <span
 									class="glyphicon glyphicon-remove" aria-hidden="true"></span>
@@ -85,5 +91,8 @@
 
 	<script type="text/javascript"
 		src='<c:url value="/web-resources/bootstrap3-dialog/js/bootstrap-dialog.js"/>'></script>
+		
+	<script type="text/javascript"
+		src='<c:url value="/web-resources/js/common.js"/>'></script>
 </body>
 </html>

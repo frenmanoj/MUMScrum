@@ -4,29 +4,26 @@
 
 <html lang="en">
 <head>
-<title>MumsScrum</title>
+<title>MUMScrum</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href='<c:url value="/web-resources/css/customize.css"/>'>
-	
+
 <link rel="stylesheet"
 	href='<c:url value="/web-resources/css/bootstrap-datetimepicker.min.css"/>'>
-	
+
 <link rel="stylesheet"
 	href='<c:url value="/web-resources/css/jquery-ui-1.10.4.custom.css"/>'>
 
 <style>
 body {
-
 	margin-top: 25px;
 	margin-bottom: 25px;
-	
 	margin-left: auto;
-    margin-right: auto;
-    
+	margin-right: auto;
 	padding-left: 25px;
 	padding-right: 25px;
 	padding-top: 25px;
@@ -34,7 +31,6 @@ body {
 	background-color: white;
 	width: 70%;
 	height: 93%;
-	
 	overflow-x: hidden;
 }
 
@@ -54,7 +50,7 @@ html {
 </head>
 <body>
 
-	<nav class="navbar navbar-inverse">
+	<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -62,25 +58,31 @@ html {
 					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Mum's Scrum</a>
+				<a class="navbar-brand" href="/mscrum/">MUMScrum</a>
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Create</a></li>
+					
+					<li class="active"><a href="/mscrum/productBacklog/">Products</a></li>
+
+					<li><a href="#">Releases</a></li>
+					<li><a href="#">Sprints</a></li>
+					
 					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
+						data-toggle="dropdown" href="#">HR <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">Page 1-1</a></li>
-							<li><a href="#">Page 1-2</a></li>
-							<li><a href="#">Page 1-3</a></li>
+							<li><a href="#">Employees</a></li>
+							<li><a href="#">Organization Chart</a></li>
 						</ul></li>
-					<li><a href="#">Page 2</a></li>
-					<li><a href="#">Page 3</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 
-					<li><a href="#"><span class="glyphicon glyphicon-off"></span>
-							Logout</a></li>
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span> <b>${pageContext.request.userPrincipal.name}</b> </a>
+						<ul class="dropdown-menu">
+							<li><a href="#"><span class="glyphicon glyphicon-eye-open"></span> &nbsp;View Profile</a></li>
+							<li><a href="javascript:formSubmit()"><span class="glyphicon glyphicon-log-out"></span> &nbsp;Logout</a></li>
+						</ul></li>
 				</ul>
 			</div>
 		</div>
@@ -90,8 +92,29 @@ html {
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script
 		src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <script type="text/javascript"
+	<script type="text/javascript"
 		src='<c:url value="/web-resources/js/bootstrap-datetimepicker.min.js"/>'></script>
-		
-</body>
+
+
+	<c:url value="/j_spring_security_logout" var="logoutUrl" />
+	
+	<form action="${logoutUrl}" method="post" id="logoutForm">
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
+	</form>
+	<script>
+		function formSubmit() {
+			document.getElementById("logoutForm").submit();
+		}
+	</script>
+
+<%-- 	<c:if test="${pageContext.request.userPrincipal.name != null}">
+		<h2>
+			Welcome : ${pageContext.request.userPrincipal.name} | <a
+				href="javascript:formSubmit()"> Logout</a>
+		</h2>
+	</c:if>
+ --%>
+ 
+ </body>
 </html>

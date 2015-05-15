@@ -1,3 +1,22 @@
+
+
+.navbar-default .navbar-nav > li > a {
+    color: #337ab7;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+    color: #337ab7;
+}
+
+.navbar-default .navbar-brand {
+    color: #337ab7;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {
+    background-color: #e7e7e7;
+    color: #337ab7;
+}
+
 .form-horizontal .control-label{
   /* text-align:right; */
   text-align:left;
@@ -8,6 +27,12 @@ th {
 	text-align: left
 }
 
+table th {
+	background-color: #e7e7e7 ;
+	//color: white;
+	font-weight: bold;
+}
+
 #footer {
     position: absolute;
     bottom: 1.5cm;
@@ -16,4 +41,30 @@ th {
     padding-right:33%;
   
     
+}
+
+.search-box {
+	color: DarkCyan;
+	float: right;
+	background-color: #fff;
+	background-image: none;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+	display: block;
+	font-size: 14px;
+	width: 204px;
+	height: 34px;
+	line-height: 1.42857;
+	padding: 6px 12px;
+	transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s
+		ease-in-out 0s;
+}
+
+.search-box:focus {
+	
+	border-color: #66afe9;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px
+		rgba(102, 175, 233, 0.6);
+	outline: 0 none;
 }
