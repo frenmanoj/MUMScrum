@@ -12,22 +12,30 @@
 <link rel="stylesheet"
 	href='<c:url value="/web-resources/css/customize.css"/>'>
 	
-	<link rel="stylesheet"
+<link rel="stylesheet"
 	href='<c:url value="/web-resources/css/bootstrap-datetimepicker.min.css"/>'>
-
+	
+<link rel="stylesheet"
+	href='<c:url value="/web-resources/css/jquery-ui-1.10.4.custom.css"/>'>
 
 <style>
 body {
-	margin-left: 230px;
-	margin-right: 230px;
+
 	margin-top: 25px;
 	margin-bottom: 25px;
+	
+	margin-left: auto;
+    margin-right: auto;
+    
 	padding-left: 25px;
 	padding-right: 25px;
 	padding-top: 25px;
 	padding-bottom: 25px;
 	background-color: white;
-	height: 690px;
+	width: 70%;
+	height: 93%;
+	
+	overflow-x: hidden;
 }
 
 html {

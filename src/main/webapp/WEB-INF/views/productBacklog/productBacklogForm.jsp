@@ -5,22 +5,23 @@
 <c:url var="actionUrl" value="save" />
 
 <form:form id="productBacklogForm" commandName="productBacklog"
-	method="post" action="${actionUrl }"
-	class="pure-form pure-form-aligned">
+	method="post" action="${actionUrl }" class="form-horizontal">
 
 	<fieldset>
 		<legend></legend>
 
-		<div class="pure-control-group">
-			<label for="name">Title</label>
-			<form:input path="title" placeholder="ProductBacklog Name" />
+		<div class="form-group">
+			<label class="control-label" for="title">Title</label>
+			
+			<form:input name="title" path="title" placeholder="ProductBacklog Name" class="form-control"
+				required="true" />
 		</div>
-		<div class="pure-control-group">
-			<label for="code">Code</label>
-			<form:input id="merocode" path="description"
-				placeholder="Description" />
+		
+		<div class="form-group">
+			<label class="control-label" for="description">Code</label>
+			<form:input name="description" path="description"
+				placeholder="Description" class="form-control" required="true" />
 		</div>
-
 		<form:input path="id" type="hidden" />
 	</fieldset>
 </form:form>

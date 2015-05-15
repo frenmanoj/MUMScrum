@@ -23,25 +23,26 @@ th {
 </head>
 
 <body>
-	<div style="width: 95%; margin: 0 auto;">
 
 		<%@ include file="../common/header.jsp"%>
 
-		<h1>
-			List Of User Stories for <b>${productBacklog.title}</b>
-		</h1>
-
-		<div id="userStoryDialog" style="display: none;">
+		<div id="userStoryDialog"  style="display: none; padding-left: 30px; padding-right:30px">
 			<%@ include file="userStoryForm.jsp"%>
 		</div>
 
-		<button class="btn btn-primary" onclick="addUserStory()">
-			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add
-			User Story
-		</button>
-
+		<div id="inlineProductBacklogDialog">
+			<%@ include file="inlineUserStoryForm.jsp"%>
+		</div>
+	
 		<br>
+		<fieldset>
+			<legend></legend>
+		</fieldset>
+	
 		<br>
+		<div style="margin: 0 auto;">
+	
+		<p style="font-size: 21px; color: #333;">List Of User Stories for <b>${productBacklog.title}</b></p>
 		<table class="table table-condensed table-striped table-bordered">
 			<thead>
 				<tr>

@@ -4,11 +4,16 @@
   
 }
 
+th {
+	text-align: left
+}
+
 #footer {
     position: absolute;
-    bottom: 1cm;
+    bottom: 1.5cm;
     width: 100%;
-    padding-right:550px;
+    
+    padding-right:33%;
   
     
 }

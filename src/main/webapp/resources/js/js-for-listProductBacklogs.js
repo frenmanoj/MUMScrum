@@ -9,7 +9,8 @@ function editProductBacklog(id) {
 
 		$("#productBacklogDialog").html(result);
 
-		$('#productBacklogDialog').dialog("option", "title", 'Edit ProductBacklog');
+		$('#productBacklogDialog').dialog("option", "title",
+				'Edit ProductBacklog');
 
 		$("#productBacklogDialog").dialog('open');
 

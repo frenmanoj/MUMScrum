@@ -5,29 +5,29 @@
 <c:url var="actionUrl" value="UserStories/save" />
 
 <form:form id="userStoryForm" commandName="userStory" method="post"
-	action="${actionUrl }">
+	action="${actionUrl }" class="form-horizontal">
 
 	<fieldset>
 		<legend></legend>
 
-		<div class="">
-			<label for="title">Title</label>
-			<form:input id="title" path="title" placeholder="Title" />
+		<div class="form-group">
+			<label class="control-label" for="title">Title</label>
+			<form:input id="title" path="title" placeholder="Title" class="form-control" />
 		</div>
-		<div class="">
-			<label for="description">Code</label>
+		<div class="form-group">
+			<label class="control-label" for="description">Code</label>
 			<form:input id="description" path="description"
-				placeholder="Description" />
+				placeholder="Description" class="form-control" />
 		</div>
 
-		<div class="">
-			<label for="estimatedHours">Estimated Hours</label>
-			<form:input id="estimatedHours" path="estimatedHours" />
+		<div class="form-group">
+			<label class="control-label" for="estimatedHours">Estimated Hours</label>
+			<form:input id="estimatedHours" path="estimatedHours" class="form-control" />
 		</div>
 
-		<div class="">
-			<label for="remainingHours">Remaining Hours</label>
-			<form:input id="remainingHours" path="remainingHours" />
+		<div class="form-group">
+			<label class="control-label" for="remainingHours">Remaining Hours</label>
+			<form:input id="remainingHours" path="remainingHours" class="form-control"/>
 		</div>
 		
 		<form:input path="assignedDate" type="hidden"/>
