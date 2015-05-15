@@ -9,6 +9,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+<link rel="stylesheet"
+	href="//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css">
+	
 <link rel="stylesheet"
 	href='<c:url value="/web-resources/css/customize.css"/>'>
 
@@ -17,6 +21,7 @@
 
 <link rel="stylesheet"
 	href='<c:url value="/web-resources/css/jquery-ui-1.10.4.custom.css"/>'>
+	
 
 <style>
 body {
@@ -30,7 +35,7 @@ body {
 	padding-bottom: 25px;
 	background-color: white;
 	width: 70%;
-	height: 93%;
+	height: 900px;
 	overflow-x: hidden;
 }
 
@@ -92,6 +97,12 @@ html {
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script
 		src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+<script
+		src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+<script
+		src="//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+
 	<script type="text/javascript"
 		src='<c:url value="/web-resources/js/bootstrap-datetimepicker.min.js"/>'></script>
 

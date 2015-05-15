@@ -86,3 +86,9 @@ table th {
 		rgba(102, 175, 233, 0.6);
 	outline: 0 none;
 }
+
+
+div.dataTables_length {
+	
+	display: none;
+} 

@@ -26,16 +26,14 @@
 	</fieldset>
 
 	<br>
-	<div style="margin: 0 auto;">
 
+
+	<div style="margin: 0 auto; ">
 		<p style="font-size: 21px; color: #333;">
-		
+
 			List Of Product Backlogs
-		
-			<input class="search-box pull-right" placeholder="Filter..." />
 		</p>
-		
-		<table class="table table-condensed table-striped table-bordered">
+		<table class="table table-condensed table-striped table-bordered" id="product-table">
 			<thead>
 				<tr>
 					<th width="5%">S.N</th>
@@ -78,7 +76,19 @@
 
 	<%@ include file="../common/footer.jsp"%>
 
+
+	<script type="text/javascript">
 	
+	
+	$(document).ready(function(){
+		
+		
+		 $('#product-table').dataTable();
+	});
+	
+	
+	</script>
+
 	<!--  It is advised to put the <script> tags at the end of the document body so they don't block rendering of the page -->
 	<%-- <script type="text/javascript"
 		src='<c:url value="/web-resources/js/lib/jquery-1.10.2.js"/>'></script> --%>

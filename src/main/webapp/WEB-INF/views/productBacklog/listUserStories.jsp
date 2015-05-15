@@ -45,10 +45,8 @@ th {
 		<p style="font-size: 21px; color: #333;">
 			
 			List Of User Stories for <b>${productBacklog.title}</b>
-		
-			<input class="search-box pull-right" placeholder="Filter..." />	
 		</p>
-		<table class="table table-condensed table-striped table-bordered">
+		<table class="table table-condensed table-striped table-bordered" id="user-story-table">
 			<thead>
 				<tr>
 					<th width="5%">S.N</th>
@@ -91,6 +89,17 @@ th {
 	</div>
 	
 	<%@ include file="../common/footer.jsp"%>
+
+
+	<script type="text/javascript">
+	
+	$(document).ready(function(){
+		
+		
+		 $('#product-table').dataTable();
+	});
+
+	</script>
 
 	<!--  It is advised to put the <script> tags at the end of the document body so they don't block rendering of the page -->
 	<script type="text/javascript"

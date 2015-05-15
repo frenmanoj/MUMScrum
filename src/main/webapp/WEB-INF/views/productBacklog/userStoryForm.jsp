@@ -15,7 +15,7 @@
 			<form:input id="title" path="title" placeholder="Title" class="form-control" />
 		</div>
 		<div class="form-group">
-			<label class="control-label" for="description">Code</label>
+			<label class="control-label" for="description">Description</label>
 			<form:input id="description" path="description"
 				placeholder="Description" class="form-control" />
 		</div>
