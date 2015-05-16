@@ -70,7 +70,7 @@ html {
 					
 					<li class="active"><a href="/mscrum/productBacklog/">Products</a></li>
 
-					<li><a href="#">Releases</a></li>
+					<li class="active"><a href="/mscrum/releaseBacklog/">Releases</a></li>
 					<li><a href="#">Sprints</a></li>
 					
 					<li class="dropdown"><a class="dropdown-toggle"

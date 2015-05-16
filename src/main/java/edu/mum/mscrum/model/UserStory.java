@@ -44,6 +44,18 @@ public class UserStory {
 	@JoinColumn(name = "product_backlog_id", nullable = false)
 	private ProductBacklog productBacklog;
 
+	@ManyToOne
+	@JoinColumn(name = "release_backlog_id", nullable = true)
+	private Release releaseBacklog;
+	
+	public Release getReleaseBacklog() {
+		return releaseBacklog;
+	}
+
+	public void setReleaseBacklog(Release releaseBacklog) {
+		this.releaseBacklog = releaseBacklog;
+	}
+
 	public long getId() {
 		return id;
 	}
