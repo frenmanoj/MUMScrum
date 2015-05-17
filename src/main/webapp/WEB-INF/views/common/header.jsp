@@ -76,7 +76,7 @@ html {
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#">HR <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">Employees</a></li>
+							<li><a href="/mscrum/employee/">Employees</a></li>
 							<li><a href="#">Organization Chart</a></li>
 						</ul></li>
 				</ul>
