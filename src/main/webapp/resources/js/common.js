@@ -5,10 +5,9 @@ $(document).ready(function() {
 
 function searchBoxFilter() {
 
-	
 	$('.search-box').keyup(function() {
-		
-		$rows = $(this).closest( "div" ).find('table:first tbody tr');
+
+		$rows = $(this).closest("div").find('table:first tbody tr');
 
 		val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
 
@@ -18,4 +17,23 @@ function searchBoxFilter() {
 		}).hide();
 	});
 
+}
+
+function formatMyDate(dateField, length, inputFormat, outputFormat) {
+
+	var dateString = dateField.val();
+
+	if (dateString) {
+
+		if (dateString.length > length) {
+
+			dateString = dateString.substring(0, length);
+		}
+
+		date = jQuery.datepicker.parseDate( inputFormat, dateString);
+
+		dateString = jQuery.datepicker.formatDate( outputFormat, date);
+
+		dateField.val(dateString);
+	}
 }

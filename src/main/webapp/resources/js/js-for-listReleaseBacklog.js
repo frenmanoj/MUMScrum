@@ -15,9 +15,16 @@ function editReleaseBacklog(id) {
 		$("#releaseBacklogDialog").dialog('open');
 
 		initializeDatePicker();
+
+		formatDates();
 	});
 }
 
+function formatDates() {
+
+	formatMyDate($("#releaseBacklogDialog #startDate"), 10, "yy-mm-dd",  "mm/dd/yy");
+	formatMyDate($("#releaseBacklogDialog #endDate"), 10, "yy-mm-dd",  "mm/dd/yy");
+}
 
 function initializeDatePicker() {
 	$('.form_date1').datetimepicker({
@@ -32,8 +39,7 @@ function initializeDatePicker() {
 		format : 'mm/dd/yyyy'
 	});
 
-
-$('.form_date2').datetimepicker({
+	$('.form_date2').datetimepicker({
 
 		weekStart : 1,
 		todayBtn : 1,
@@ -45,8 +51,6 @@ $('.form_date2').datetimepicker({
 		format : 'mm/dd/yyyy'
 	});
 }
-
-
 
 function resetDialog(form) {
 

@@ -27,9 +27,9 @@
 			<div class="form-group">
 				<label for="dtp_input1" class="control-label">Start Date </label> <br>
 				<div class="input-group date form_date1" data-date=""
-					data-date-format="dd MM yyyy" data-link-field="dtp_input1"
+					data-date-format="dd mm yyyy" data-link-field="dtp_input1"
 					data-link-format="yyyy-mm-dd">
-					<form:input class="form-control" path="startDate" type="text" />
+					<form:input id="startDate" class="form-control" path="startDate" type="text" />
 					<span class="input-group-addon "><span
 						class="glyphicon glyphicon-calendar"></span> </span>
 				</div>
@@ -39,9 +39,9 @@
 			<div class="form-group">
 				<label for="dtp_input2" class=" control-label">End Date </label> <br>
 				<div class="input-group date form_date2" data-date=""
-					data-date-format="MM dd yyyy" data-link-field="dtp_input2"
-					data-link-format="MM-dd-yyyy">
-					<form:input class="form-control" type="text" path="endDate"/>
+					data-date-format="dd mm yyyy" data-link-field="dtp_input2"
+					data-link-format="dd-mm-yyyy">
+					<form:input id="endDate" class="form-control" type="text" path="endDate"/>
 					<span class="input-group-addon"><span
 						class="glyphicon glyphicon-calendar"></span> </span>
 				</div>
@@ -51,3 +51,6 @@
 		<form:input path="id" type="hidden" />
 	</fieldset>
 </form:form>
+
+<script type="text/javascript"
+		src='<c:url value="/web-resources/js/common.js"/>'></script>
