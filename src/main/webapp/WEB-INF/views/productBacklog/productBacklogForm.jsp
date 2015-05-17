@@ -24,6 +24,5 @@
 				placeholder="Description" class="form-control" required="true" />
 		</div>
 		<form:input path="id" type="hidden" />
-		<form:input path="productBacklog" type="productBacklog" />
 	</fieldset>
 </form:form>
