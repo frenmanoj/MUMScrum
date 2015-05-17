@@ -29,7 +29,7 @@
 				<div class="input-group date form_date1" data-date=""
 					data-date-format="dd MM yyyy" data-link-field="dtp_input1"
 					data-link-format="yyyy-mm-dd">
-					<form:input class="form-control" path="startDate" type="text"  readonly="true" />
+					<form:input class="form-control" path="startDate" type="text" />
 					<span class="input-group-addon "><span
 						class="glyphicon glyphicon-calendar"></span> </span>
 				</div>
@@ -41,7 +41,7 @@
 				<div class="input-group date form_date2" data-date=""
 					data-date-format="MM dd yyyy" data-link-field="dtp_input2"
 					data-link-format="MM-dd-yyyy">
-					<form:input class="form-control" type="text" path="endDate" readonly="true" />
+					<form:input class="form-control" type="text" path="endDate"/>
 					<span class="input-group-addon"><span
 						class="glyphicon glyphicon-calendar"></span> </span>
 				</div>

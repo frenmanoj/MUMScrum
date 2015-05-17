@@ -47,7 +47,7 @@
 					varStatus="loopCounter">
 					<tr>
 						<td><c:out value="${loopCounter.count}" /></td>
-						<td><a href="${productBacklog.id}/UserStories"><c:out
+						<td><a href="${productBacklog.id}/details"><c:out
 									value="${productBacklog.title}" /></a></td>
 						<td><c:out value="${productBacklog.description}" /></td>
 

@@ -22,7 +22,7 @@
 		<fieldset>
 
 			<!-- Form Name -->
-			<legend>Add Release Backlog</legend>
+			<legend>Add Release Backlog for <b>${productBacklog.title}</b></legend>
 
 			<c:if test="${not empty message}">
 		
@@ -86,7 +86,7 @@
 	<br>
 	<div style="margin: 0 auto;">
 
-		<p style="font-size: 21px; color: #333;">List Of Release Backlogs</p>
+		<p style="font-size: 21px; color: #333;">List Of Release Backlogs for <b>${productBacklog.title}</b></p>
 		<table class="table table-condensed table-striped table-bordered" id="release-table">
 			<thead>
 				<tr>

@@ -77,6 +77,8 @@ public class ProductBacklogController {
 		map.put("productBacklog", productBacklog);
 		map.put("releaseBacklog", new Release());
 		map.put("releaseBackloglist", releases);
+		
+		System.out.println("product backlog : " + productBacklog.getTitle());
 
 		return "/releaseBacklog/listReleaseBacklog";
 	}
