@@ -1,7 +1,7 @@
 package edu.mum.mscrum.controller;
 
-import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.mum.mscrum.model.ProductBacklog;
+import edu.mum.mscrum.model.Release;
 import edu.mum.mscrum.model.UserStory;
 import edu.mum.mscrum.service.ProductBacklogService;
 import edu.mum.mscrum.service.UserStoryService;
@@ -55,13 +56,41 @@ public class ProductBacklogController {
 		ProductBacklog productBacklog = productBacklogService
 				.getById(productBacklogId);
 
-		List<UserStory> userStories = productBacklog.getUserStories();
+		Set<UserStory> userStories = productBacklog.getUserStories();
 
 		map.put("productBacklog", productBacklog);
 		map.put("userStory", new UserStory());
 		map.put("userStories", userStories);
 
 		return "productBacklog/listUserStories";
+	}
+
+	@RequestMapping("/{productBacklogId}/Releases")
+	public String getAllReleases(@PathVariable Long productBacklogId,
+			Map<String, Object> map) {
+
+		ProductBacklog productBacklog = productBacklogService
+				.getById(productBacklogId);
+
+		Set<Release> releases = productBacklog.getReleases();
+
+		map.put("productBacklog", productBacklog);
+		map.put("releaseBacklog", new Release());
+		map.put("releaseBackloglist", releases);
+
+		return "/releaseBacklog/listReleaseBacklog";
+	}
+
+	@RequestMapping("/{productBacklogId}/details")
+	public String getProductBacklogDetails(@PathVariable Long productBacklogId,
+			Map<String, Object> map) {
+
+		ProductBacklog productBacklog = productBacklogService
+				.getById(productBacklogId);
+
+		map.put("productBacklog", productBacklog);
+
+		return "productBacklog/productBacklogDetails";
 	}
 
 	@RequestMapping("/{productBacklogId}/get/{userStoryId}")
@@ -119,9 +148,9 @@ public class ProductBacklogController {
 
 		ProductBacklog productBacklog = productBacklogService.getById(id);
 
-		userStory.setProductBacklog(productBacklog);
+		productBacklog.addUserStory(userStory);
 
-		userStoryService.save(userStory);
+		productBacklogService.save(productBacklog);
 
 		redir.addFlashAttribute("message", "New user story added!!!");
 
@@ -137,11 +166,7 @@ public class ProductBacklogController {
 			@PathVariable("productBacklogId") Long productBacklogId,
 			@PathVariable("userStoryId") Long userStoryId) {
 
-		ProductBacklog productBacklog = productBacklogService
-				.getById(productBacklogId);
 		UserStory userStory = userStoryService.getById(userStoryId);
-
-		userStory.setProductBacklog(productBacklog);
 
 		userStoryService.delete(userStory);
 
