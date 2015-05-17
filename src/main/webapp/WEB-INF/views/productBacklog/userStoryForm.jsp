@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 
-<c:url var="actionUrl" value="UserStories/save" />
+<c:url var="actionUrl" value="save" />
 
 <form:form id="userStoryForm" commandName="userStory" method="post"
 	action="${actionUrl }" class="form-horizontal">

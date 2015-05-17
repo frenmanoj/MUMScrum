@@ -49,7 +49,7 @@ public class ProductBacklogController {
 		return "/productBacklog/productBacklogForm";
 	}
 
-	@RequestMapping("/{productBacklogId}/UserStories")
+	@RequestMapping("/{productBacklogId}/UserStories/")
 	public String getAllUserStories(@PathVariable Long productBacklogId,
 			Map<String, Object> map) {
 
@@ -77,7 +77,7 @@ public class ProductBacklogController {
 		map.put("productBacklog", productBacklog);
 		map.put("releaseBacklog", new Release());
 		map.put("releaseBackloglist", releases);
-		
+
 		System.out.println("product backlog : " + productBacklog.getTitle());
 
 		return "/releaseBacklog/listReleaseBacklog";
@@ -95,7 +95,7 @@ public class ProductBacklogController {
 		return "productBacklog/productBacklogDetails";
 	}
 
-	@RequestMapping("/{productBacklogId}/get/{userStoryId}")
+	@RequestMapping("/{productBacklogId}/UserStories/get/{userStoryId}")
 	public String getUserStory(@PathVariable Long productBacklogId,
 			@PathVariable Long userStoryId, Map<String, Object> map) {
 
@@ -150,9 +150,8 @@ public class ProductBacklogController {
 
 		ProductBacklog productBacklog = productBacklogService.getById(id);
 
-		productBacklog.addUserStory(userStory);
-
-		productBacklogService.save(productBacklog);
+		userStory.setProductBacklog(productBacklog);
+		userStoryService.save(userStory);
 
 		redir.addFlashAttribute("message", "New user story added!!!");
 
@@ -160,7 +159,7 @@ public class ProductBacklogController {
 		 * Note that there is no slash "/" right after "redirect:" So, it
 		 * redirects to the path relative to the current path
 		 */
-		return "redirect:/productBacklog/" + id + "/UserStories";
+		return "redirect:/productBacklog/" + id + "/UserStories/";
 	}
 
 	@RequestMapping("/{productBacklogId}/delete/{userStoryId}")

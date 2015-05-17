@@ -27,8 +27,7 @@ th {
 	<%@ include file="../common/header.jsp"%>
 
 
-	<a class="btn btn-primary" href="UserStories/">User
-		Stories</a>
+	<a class="btn btn-primary" href="UserStories/">User Stories</a>
 	<a class="btn btn-primary" href="releases/">Releases</a>
 
 
