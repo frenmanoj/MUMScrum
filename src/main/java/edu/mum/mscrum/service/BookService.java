@@ -1,11 +1,11 @@
 package edu.mum.mscrum.service;
 
-import java.util.List;
+import java.util.Set;
 
 import edu.mum.mscrum.model.Book;
 
 public interface BookService extends GenericService<Book> {
 
-	public List<Book> searchByName(String name);
+	public Set<Book> searchByName(String name);
 
 }

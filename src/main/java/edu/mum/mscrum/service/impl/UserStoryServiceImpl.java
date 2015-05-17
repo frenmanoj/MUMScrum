@@ -1,6 +1,7 @@
 package edu.mum.mscrum.service.impl;
 
-import java.util.List;
+import java.util.Set;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,7 +31,7 @@ public class UserStoryServiceImpl extends GenericServiceImpl<UserStory>
 	}
 
 	@Override
-	public List<UserStory> searchByTitle(String title) {
+	public Set<UserStory> searchByTitle(String title) {
 
 		return userStoryDao.listAll();
 	}

@@ -1,6 +1,6 @@
 package edu.mum.mscrum.hrss.service.impl;
 
-import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,8 +31,8 @@ public class EmployeeServiceImpl extends
 	}
 
 	@Override
-	public List<Employee> getEmployee(Long id) {
+	public Set<Employee> getEmployee(Long id) {
 
-		return employeeDao.listAll();
+		return (Set<Employee>) employeeDao.listAll();
 	}
 }

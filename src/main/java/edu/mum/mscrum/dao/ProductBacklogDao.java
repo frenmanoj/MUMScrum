@@ -1,10 +1,10 @@
 package edu.mum.mscrum.dao;
 
-import java.util.List;
+import java.util.Set;
 
 import edu.mum.mscrum.model.ProductBacklog;
 
 public interface ProductBacklogDao extends GenericDao<ProductBacklog> {
 
-	public List<ProductBacklog> searchByTitle(String title);
+	public Set<ProductBacklog> searchByTitle(String title);
 }

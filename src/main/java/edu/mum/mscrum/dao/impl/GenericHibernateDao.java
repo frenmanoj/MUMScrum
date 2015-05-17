@@ -1,7 +1,9 @@
 package edu.mum.mscrum.dao.impl;
 
 import java.lang.reflect.ParameterizedType;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -48,10 +50,18 @@ public class GenericHibernateDao<T> implements GenericDao<T> {
 	}
 
 	@Override
-	public List<T> listAll() {
+	public Set<T> listAll() {
 
-		return getSession().createCriteria(getPersistentClass())
+		List<T> list = getSession().createCriteria(getPersistentClass())
 				.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+
+		Set<T> returnList = new HashSet<T>();
+
+		for (T t : list) {
+			returnList.add(t);
+		}
+
+		return returnList;
 	}
 
 	@Override

@@ -1,6 +1,6 @@
 package edu.mum.mscrum.dao.impl;
 
-import java.util.List;
+import java.util.Set;
 
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
@@ -14,9 +14,9 @@ public class UserStoryDaoImpl extends GenericHibernateDao<UserStory> implements
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<UserStory> searchByTitle(String title) {
+	public Set<UserStory> searchByTitle(String title) {
 
-		return getSession().createCriteria(UserStory.class)
+		return (Set<UserStory>) getSession().createCriteria(UserStory.class)
 				.add(Restrictions.eq("title", title)).list();
 	}
 }

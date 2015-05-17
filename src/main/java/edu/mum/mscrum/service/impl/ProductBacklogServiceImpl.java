@@ -1,6 +1,6 @@
 package edu.mum.mscrum.service.impl;
 
-import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,8 +30,8 @@ public class ProductBacklogServiceImpl extends
 	}
 
 	@Override
-	public List<ProductBacklog> searchByTitle(String title) {
+	public Set<ProductBacklog> searchByTitle(String title) {
 
-		return productBacklogDao.listAll();
+		return (Set<ProductBacklog>) productBacklogDao.listAll();
 	}
 }

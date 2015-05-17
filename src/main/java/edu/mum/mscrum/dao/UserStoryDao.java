@@ -1,10 +1,10 @@
 package edu.mum.mscrum.dao;
 
-import java.util.List;
+import java.util.Set;
 
 import edu.mum.mscrum.model.UserStory;
 
 public interface UserStoryDao extends GenericDao<UserStory> {
 
-	public List<UserStory> searchByTitle(String title);
+	public Set<UserStory> searchByTitle(String title);
 }

@@ -1,6 +1,6 @@
 package edu.mum.mscrum.hrss.dao.impl;
 
-import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -18,9 +18,9 @@ public class EmployeeDaoImpl extends GenericHibernateDao<Employee>
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Employee> getEmployee(Long id) {
+	public Set<Employee> getEmployee(Long id) {
 
-		return getSession().createCriteria(Employee.class)
+		return (Set<Employee>) getSession().createCriteria(Employee.class)
 				.add(Restrictions.eq("id", id)).list();
 	}
 }

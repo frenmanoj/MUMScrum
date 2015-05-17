@@ -48,6 +48,20 @@ public class UserStory {
 	@JoinColumn(name = "release_backlog_id", nullable = true)
 	private Release releaseBacklog;
 	
+	@ManyToOne
+	@JoinColumn(name = "sprint_id", nullable = true)
+	private Sprint sprint;
+	
+	
+	
+	public Sprint getSprint() {
+		return sprint;
+	}
+
+	public void setSprint(Sprint sprint) {
+		this.sprint = sprint;
+	}
+
 	public Release getReleaseBacklog() {
 		return releaseBacklog;
 	}

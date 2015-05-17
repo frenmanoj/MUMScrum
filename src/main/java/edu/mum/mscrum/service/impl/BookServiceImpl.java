@@ -1,6 +1,6 @@
 package edu.mum.mscrum.service.impl;
 
-import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,7 +30,7 @@ public class BookServiceImpl extends GenericServiceImpl<Book> implements
 	}
 
 	@Override
-	public List<Book> searchByName(String name) {
+	public Set<Book> searchByName(String name) {
 
 		return bookDao.listAll();
 	}

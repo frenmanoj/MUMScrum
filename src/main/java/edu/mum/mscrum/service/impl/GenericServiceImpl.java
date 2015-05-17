@@ -1,6 +1,6 @@
 package edu.mum.mscrum.service.impl;
 
-import java.util.List;
+import java.util.Set;
 
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,7 +27,7 @@ public abstract class GenericServiceImpl<T> implements GenericService<T> {
 	}
 
 	@Override
-	public List<T> listAll() {
+	public Set<T> listAll() {
 
 		return genericDao.listAll();
 	}
