@@ -1,9 +1,8 @@
 package edu.mum.mscrum.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,6 +11,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 @Entity
 @Table(name = "product_backlog")
@@ -23,7 +25,9 @@ public class ProductBacklog {
 
 	private String description;
 
-	private List<UserStory> userStories = new ArrayList<UserStory>();
+	private Set<UserStory> userStories = new HashSet<UserStory>();
+
+	private Set<Release> releases = new HashSet<Release>();
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,10 +35,18 @@ public class ProductBacklog {
 		return id;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "productBacklog", fetch = FetchType.EAGER)
-	public List<UserStory> getUserStories() {
+	@OneToMany(mappedBy = "productBacklog", fetch = FetchType.EAGER)
+	@Cascade({ CascadeType.ALL })
+	public Set<UserStory> getUserStories() {
 
 		return userStories;
+	}
+
+	@OneToMany(mappedBy = "productBacklog", fetch = FetchType.EAGER)
+	@Cascade({ CascadeType.ALL })
+	public Set<Release> getReleases() {
+
+		return releases;
 	}
 
 	@Column
@@ -52,13 +64,24 @@ public class ProductBacklog {
 		this.id = id;
 	}
 
-	public void setUserStories(List<UserStory> userStories) {
+	public void setUserStories(Set<UserStory> userStories) {
 
 		this.userStories = userStories;
 	}
 
+	public void addRelease(Release release) {
+		this.releases.add(release);
+		release.setProductBacklog(this);
+	}
+
+	public void setReleases(Set<Release> releases) {
+
+		this.releases = releases;
+	}
+
 	public void addUserStory(UserStory userStory) {
 		this.userStories.add(userStory);
+		userStory.setProductBacklog(this);
 	}
 
 	public void setTitle(String title) {
