@@ -162,7 +162,7 @@ public class ProductBacklogController {
 		return "redirect:/productBacklog/" + id + "/UserStories/";
 	}
 
-	@RequestMapping("/{productBacklogId}/delete/{userStoryId}")
+	@RequestMapping("/{productBacklogId}/UserStories/delete/{userStoryId}")
 	public String deleteUserStory(
 			@PathVariable("productBacklogId") Long productBacklogId,
 			@PathVariable("userStoryId") Long userStoryId) {
@@ -175,6 +175,6 @@ public class ProductBacklogController {
 		 * Note that there is no slash "/" right after "redirect:" So, it
 		 * redirects to the path relative to the current path
 		 */
-		return "redirect:/productBacklog/" + productBacklogId + "/UserStories";
+		return "redirect:/productBacklog/" + productBacklogId + "/UserStories/";
 	}
 }
