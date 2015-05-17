@@ -32,14 +32,14 @@ public class ReleaseController {
 	}
 
 	
-	@RequestMapping("/get/{releaseBacklogId")
+	@RequestMapping("/get/{releaseBacklogId}")
 	
 	public String getReleaseBackog(@PathVariable Long releaseBacklogId, Map<String,Object> map)
 	{
 		Release releaseBacklog = releaseBacklogService.getById(releaseBacklogId);
 		
 		map.put("releaseBacklog", releaseBacklog);
-		return "/releaseBacklog/listReleaseBacklog";
+		return "/releaseBacklog/releaseBacklogForm";
 	}
 
 	@RequestMapping(value="/save", method=RequestMethod.POST)	
@@ -52,4 +52,22 @@ public class ReleaseController {
 	
 		return "redirect:listReleaseBacklog";
 	}
+	
+	@RequestMapping("/delete/{releaseBacklogId}")
+	public String deleteReleaseBacklog(@PathVariable("releaseBacklogId") Long id) {
+
+		releaseBacklogService.deleteById(id);
+
+		/*
+		 * redirects to the path relative to the current path
+		 */
+		// return "redirect:../listProductBacklogs";
+
+		/*
+		 * Note that there is the slash "/" right after "redirect:" So, it
+		 * redirects to the path relative to the project root path
+		 */
+		return "redirect:/releaseBacklog/listReleaseBacklog";
+	}
+	
 }

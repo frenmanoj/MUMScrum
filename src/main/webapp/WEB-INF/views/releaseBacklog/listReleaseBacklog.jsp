@@ -1,5 +1,6 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,6 +13,9 @@
 <body>
 
 	<%@ include file="../common/header.jsp"%>
+	<div id="releaseBacklogDialog" style="display: none; padding-left: 30px; padding-right:30px">
+		<%@ include file="releaseBacklogForm.jsp"%>
+	</div>
 
 <c:url var="actionUrl" value="save"/>
 	<form:form id="listReleaseForm" commandName="releaseBacklog" method="post" action="${actionUrl }" class="form-horizontal">
@@ -83,7 +87,7 @@
 	<div style="margin: 0 auto;">
 
 		<p style="font-size: 21px; color: #333;">List Of Release Backlogs</p>
-		<table data-toggle="table" data-cache="false" data-height="100" class="table table-condensed table-striped table-bordered">
+		<table class="table table-condensed table-striped table-bordered" id="release-table">
 			<thead>
 				<tr>
 					<th width="5%">S.N</th>
@@ -102,8 +106,22 @@
 						<td><a href="${releaseBacklog.id}/UserStories"><c:out
 						 value="${releaseBacklog.name}" /></a></td>
 						 <td><c:out value="${releaseBacklog.description}"/></td>
-						 <td><c:out value="${releaseBacklog.startDate}"/></td>
-						<td><c:out value="${releaseBacklog.endDate}" /></td>
+						 <td><c:choose> <c:when test="${releaseBacklog.startDate!=null}">
+						 <c:out value="${fn:substring(releaseBacklog.startDate,0,10)}"/>
+						 </c:when>
+						 <c:otherwise> 
+						  <c:out value="${releaseBacklog.startDate}"/>
+						  </c:otherwise>
+						  </c:choose>
+						 </td>
+						<td><c:choose> <c:when test="${releaseBacklog.endDate!=null}">
+						 <c:out value="${fn:substring(releaseBacklog.endDate,0,10)}"/>
+						 </c:when>
+						 <c:otherwise> 
+						  <c:out value="${releaseBacklog.endDate}"/>
+						  </c:otherwise>
+						  </c:choose>
+						 </td>
 
 						<td><nobr>
 								<button class="btn btn-primary btn-sm"
@@ -130,30 +148,7 @@
 
 
 	<script type="text/javascript">
-		$('.form_date1').datetimepicker({
-
-			weekStart : 1,
-			todayBtn : 1,
-			autoclose : 1,
-			todayHighlight : 1,
-			startView : 2,
-			minView : 2,
-			forceParse : 0,
-			format : 'mm/dd/yyyy'
-		});
-	
-	
-	$('.form_date2').datetimepicker({
-
-			weekStart : 1,
-			todayBtn : 1,
-			autoclose : 1,
-			todayHighlight : 1,
-			startView : 2,
-			minView : 2,
-			forceParse : 0,
-			format : 'mm/dd/yyyy'
-		});
+		
 	
 	$( document ).ready(function() {
     
@@ -162,9 +157,23 @@
 		$('#message-box').show(new function(){setTimeout(function(){ $('#message-box').slideUp() }, 4000);});
 
 	}
+	
+	initializeDatePicker();
 });
 
+  $(document).ready(function() 
+  {
+     $('#release-table').dataTable();
+  });
 </script>
+<script type="text/javascript"
+		src='<c:url value="/web-resources/js/lib/jquery-ui-1.10.4.custom.js"/>'></script>
+	<script type="text/javascript"
+		src='<c:url value="/web-resources/js/lib/jquery.ui.datepicker.js"/>'></script>
+	<script type="text/javascript"
+		src='<c:url value="/web-resources/js/js-for-listReleaseBacklog.js"/>'></script>
+	<script type="text/javascript"
+		src='<c:url value="/web-resources/js/common.js"/>'></script>
 <%@ include file="../common/footer.jsp"%>
 </body>
 </html>

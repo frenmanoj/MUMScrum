@@ -66,14 +66,14 @@ public class Release {
 //	public void setSrumMaster(String srumMaster) {
 //		this.srumMaster = srumMaster;
 //	}
-	@Column(nullable = false)
+	@Column(nullable = true)
 	public Date getStartDate() {
 		return startDate;
 	}
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
-	@Column(nullable = false)
+	@Column(nullable = true)
 	public Date getEndDate() {
 		return endDate;
 	}
