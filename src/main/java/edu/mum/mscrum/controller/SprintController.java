@@ -12,24 +12,31 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import edu.mum.mscrum.model.Release;
 import edu.mum.mscrum.model.Sprint;
 import edu.mum.mscrum.model.UserStory;
+import edu.mum.mscrum.service.ReleaseService;
 import edu.mum.mscrum.service.SprintService;
 import edu.mum.mscrum.service.UserStoryService;
 
 @Controller
-@RequestMapping("/sprint")
+@RequestMapping("/productBacklog/{productBacklogId}/releases/{releaseBacklogId}/sprint")
 public class SprintController {
 
 	@Autowired
 	private SprintService sprintService;
+	
+	@Autowired
+	private ReleaseService releaseService;
+	
 
 	@Autowired
 	private UserStoryService userStoryService;
 
 	@RequestMapping(value = { "/", "/listSprints" })
-	public String listSprints(Map<String, Object> map) {
-
+	public String listSprints(@PathVariable Long releaseBacklogId,Map<String, Object> map) {
+		Release release= releaseService.getById(releaseBacklogId);
+		map.put("release", release);
 		map.put("sprint", new Sprint());
 		map.put("sprintList", sprintService.listAll());
 
