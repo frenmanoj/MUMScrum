@@ -1,8 +1,9 @@
 package edu.mum.mscrum.model;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -27,7 +28,7 @@ public class Release {
 	private Date startDate;
 	private Date endDate;
 
-	private List<UserStory> userStories = new ArrayList<UserStory>();
+	private Set<UserStory> userStories = new HashSet<UserStory>();
 	private ProductBacklog productBacklog;
 
 	@ManyToOne
@@ -41,12 +42,12 @@ public class Release {
 	}
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "releaseBacklog", fetch = FetchType.EAGER)
-	public List<UserStory> getUserStories() {
+	public Set<UserStory> getUserStories() {
 
 		return userStories;
 	}
 
-	public void setUserStories(List<UserStory> userStories) {
+	public void setUserStories(Set<UserStory> userStories) {
 		this.userStories = userStories;
 	}
 

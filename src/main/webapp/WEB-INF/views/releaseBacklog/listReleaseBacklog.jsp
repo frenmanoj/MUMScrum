@@ -13,6 +13,7 @@
 <body>
 
 	<%@ include file="../common/header.jsp"%>
+	
 	<div id="releaseBacklogDialog" style="display: none; padding-left: 30px; padding-right:30px">
 		<%@ include file="releaseBacklogForm.jsp"%>
 	</div>
@@ -103,7 +104,7 @@
 					varStatus="loopCounter">
 					<tr>
 						<td><c:out value="${loopCounter.count}" /></td>
-						<td><a href="${releaseBacklog.id}/UserStories"><c:out
+						<td><a href="${releaseBacklog.id}/details"><c:out
 						 value="${releaseBacklog.name}" /></a></td>
 						 <td><c:out value="${releaseBacklog.description}"/></td>
 						 <td><c:choose> <c:when test="${releaseBacklog.startDate!=null}">

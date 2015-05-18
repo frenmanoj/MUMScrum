@@ -97,9 +97,6 @@
 	<script type="text/javascript"
 		src='<c:url value="/web-resources/js/lib/jquery.ui.datepicker.js"/>'></script>
 	<script type="text/javascript"
-		src='<c:url value="/web-resources/js/js-for-listProductBacklogs.js"/>'></script>
-
-	<script type="text/javascript"
 		src='<c:url value="/web-resources/bootstrap3-dialog/js/bootstrap-dialog.js"/>'></script>
 		
 	<script type="text/javascript"

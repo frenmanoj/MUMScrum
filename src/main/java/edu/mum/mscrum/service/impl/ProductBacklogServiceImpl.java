@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import edu.mum.mscrum.dao.ProductBacklogDao;
 import edu.mum.mscrum.model.ProductBacklog;
+import edu.mum.mscrum.model.UserStory;
 import edu.mum.mscrum.service.ProductBacklogService;
 
 @Service
@@ -33,5 +34,11 @@ public class ProductBacklogServiceImpl extends
 	public Set<ProductBacklog> searchByTitle(String title) {
 
 		return (Set<ProductBacklog>) productBacklogDao.listAll();
+	}
+
+	@Override
+	public Set<UserStory> getAvailableUserStories(ProductBacklog productBacklog) {
+
+		return productBacklogDao.getAvailableUserStories(productBacklog);
 	}
 }
