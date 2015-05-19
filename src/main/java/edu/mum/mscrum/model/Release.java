@@ -3,9 +3,7 @@ package edu.mum.mscrum.model;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,6 +14,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 @Entity
 @Table(name = "release_backlog")
@@ -29,6 +30,9 @@ public class Release {
 	private Date endDate;
 
 	private Set<UserStory> userStories = new HashSet<UserStory>();
+
+	private Set<Sprint> sprints = new HashSet<Sprint>();
+
 	private ProductBacklog productBacklog;
 
 	@ManyToOne
@@ -41,14 +45,25 @@ public class Release {
 		this.productBacklog = productBacklog;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "releaseBacklog", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "releaseBacklog", fetch = FetchType.EAGER)
+	@Cascade({ CascadeType.ALL })
 	public Set<UserStory> getUserStories() {
 
 		return userStories;
 	}
 
+	@OneToMany(mappedBy = "releaseBacklog", fetch = FetchType.EAGER)
+	@Cascade({ CascadeType.ALL })
+	public Set<Sprint> getSprints() {
+		return sprints;
+	}
+
 	public void setUserStories(Set<UserStory> userStories) {
 		this.userStories = userStories;
+	}
+
+	public void setSprints(Set<Sprint> sprints) {
+		this.sprints = sprints;
 	}
 
 	@Id

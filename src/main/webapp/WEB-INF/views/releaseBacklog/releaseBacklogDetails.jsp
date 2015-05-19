@@ -27,7 +27,7 @@ th {
 
 
 	<a class="btn btn-primary" href="userStories/">User Stories</a>
-	<a class="btn btn-primary" href="sprint/">Sprints</a>
+	<a class="btn btn-primary" href="sprints/">Sprints</a>
 
 
 	<%@ include file="../common/footer.jsp"%>

@@ -24,7 +24,7 @@ th {
 
 		<p style="font-size: 21px; color: #333;">
 
-			List Of User Stories for <b>${release.name}</b>
+			List Of Available User Stories for the sprint: <b>${sprint.title}</b>
 		</p>
 
 		<form action="addUserStories" method="post">
@@ -58,7 +58,7 @@ th {
 			</table>
 			<input type="hidden" name="${_csrf.parameterName}"
 				value="${_csrf.token}" /> <input type="submit"
-				value="Add to Release" class="btn btn-primary" />
+				value="Add to Sprint" class="btn btn-primary" />
 		</form>
 	</div>
 

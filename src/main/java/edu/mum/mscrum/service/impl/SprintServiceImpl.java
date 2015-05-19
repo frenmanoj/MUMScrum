@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 import edu.mum.mscrum.dao.SprintDao;
 import edu.mum.mscrum.model.Sprint;
 import edu.mum.mscrum.service.SprintService;
-import edu.mum.mscrum.service.SprintService;
 
 @Service
 @Transactional

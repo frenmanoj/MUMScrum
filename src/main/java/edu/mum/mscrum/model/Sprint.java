@@ -26,21 +26,18 @@ public class Sprint {
 	private String title;
 
 	private String description;
-	
+
 	private Release releaseBacklog;
-	
 
 	private Set<UserStory> userStories = new HashSet<UserStory>();
-	
-	
 
 	@ManyToOne
 	@JoinColumn(name = "release_id", nullable = true)
-	public Release getRelease() {
+	public Release getReleaseBacklog() {
 		return releaseBacklog;
 	}
 
-	public void setRelease(Release releaseBacklog) {
+	public void setReleaseBacklog(Release releaseBacklog) {
 		this.releaseBacklog = releaseBacklog;
 	}
 
@@ -50,7 +47,7 @@ public class Sprint {
 		return id;
 	}
 
-	@OneToMany( mappedBy = "sprint", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "sprint", fetch = FetchType.EAGER)
 	@Cascade({ CascadeType.ALL })
 	public Set<UserStory> getUserStories() {
 

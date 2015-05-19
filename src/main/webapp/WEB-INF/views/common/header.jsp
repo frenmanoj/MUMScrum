@@ -11,8 +11,8 @@
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
 <link rel="stylesheet"
-	href="//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css">
-	
+	href='<c:url value="/web-resources/css/lib/dataTables.bootstrap.css"/>'>
+
 <link rel="stylesheet"
 	href='<c:url value="/web-resources/css/customize.css"/>'>
 
@@ -21,7 +21,7 @@
 
 <link rel="stylesheet"
 	href='<c:url value="/web-resources/css/jquery-ui-1.10.4.custom.css"/>'>
-	
+
 
 <style>
 body {
@@ -67,7 +67,7 @@ html {
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
-					
+
 					<li class="active"><a href="/mscrum/productBacklog/">Products</a></li>
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#">HR <span class="caret"></span></a>
@@ -79,10 +79,14 @@ html {
 				<ul class="nav navbar-nav navbar-right">
 
 					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span> <b>${pageContext.request.userPrincipal.name}</b> </a>
+						data-toggle="dropdown" href="#"><span
+							class="glyphicon glyphicon-user"></span> <b>${pageContext.request.userPrincipal.name}</b>
+					</a>
 						<ul class="dropdown-menu">
-							<li><a href="#"><span class="glyphicon glyphicon-eye-open"></span> &nbsp;View Profile</a></li>
-							<li><a href="javascript:formSubmit()"><span class="glyphicon glyphicon-log-out"></span> &nbsp;Logout</a></li>
+							<li><a href="#"><span
+									class="glyphicon glyphicon-eye-open"></span> &nbsp;View Profile</a></li>
+							<li><a href="javascript:formSubmit()"><span
+									class="glyphicon glyphicon-log-out"></span> &nbsp;Logout</a></li>
 						</ul></li>
 				</ul>
 			</div>
@@ -94,17 +98,24 @@ html {
 	<script
 		src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
-<script
-		src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
-<script
-		src="//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+	<script
+		src='<c:url value="/web-resources/js/lib/jquery.dataTables.1.10.7.min.js"/>'></script>
+	<script
+		src='<c:url value="/web-resources/js/lib/dataTables.bootstrap.js"/>'></script>
 
 	<script type="text/javascript"
-		src='<c:url value="/web-resources/js/bootstrap-datetimepicker.min.js"/>'></script>
+		src='<c:url value="/web-resources/js/lib/bootstrap-datetimepicker.min.js"/>'></script>
 
+	<script type="text/javascript"
+		src='<c:url value="/web-resources/js/lib/jquery-ui-1.10.4.custom.js"/>'></script>
+	<script type="text/javascript"
+		src='<c:url value="/web-resources/js/lib/jquery.ui.datepicker.js"/>'></script>
+
+	<script type="text/javascript"
+		src='<c:url value="/web-resources/js/common.js"/>'></script>
 
 	<c:url value="/j_spring_security_logout" var="logoutUrl" />
-	
+
 	<form action="${logoutUrl}" method="post" id="logoutForm">
 		<input type="hidden" name="${_csrf.parameterName}"
 			value="${_csrf.token}" />
@@ -115,13 +126,13 @@ html {
 		}
 	</script>
 
-<%-- 	<c:if test="${pageContext.request.userPrincipal.name != null}">
+	<%-- 	<c:if test="${pageContext.request.userPrincipal.name != null}">
 		<h2>
 			Welcome : ${pageContext.request.userPrincipal.name} | <a
 				href="javascript:formSubmit()"> Logout</a>
 		</h2>
 	</c:if>
  --%>
- 
- </body>
+
+</body>
 </html>
