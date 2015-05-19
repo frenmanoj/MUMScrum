@@ -64,8 +64,8 @@ th {
 						<td><c:out value="${loopCounter.count}" /></td>
 						<td>${userStory.title}</td>
 						<td>${userStory.description}</td>
-						<td>${userStory.estimatedHours}</td>
-						<td>${userStory.remainingHours}</td>
+						<td>${userStory.estimatedDevHours}</td>
+						<td>${userStory.remainingDevHours}</td>
 						<td><nobr>
 								<button class="btn btn-primary btn-sm"
 									onclick="editUserStory(${userStory.id});">

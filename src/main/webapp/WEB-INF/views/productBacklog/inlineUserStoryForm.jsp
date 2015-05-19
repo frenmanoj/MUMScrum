@@ -29,15 +29,15 @@
 		</div>
 		
 		<div class="col-md-2">
-			<label for="estimatedHours" class="control-label">Estimated Hours</label> <br>
+			<label for="estimatedDevHours" class="control-label">Estimated Hours</label> <br>
 			<form:input class="form-control" type="text" required="true"
-				path="estimatedHours" placeholder="" />
+				path="estimatedDevHours" placeholder="" />
 		</div>
 		
 		<div class="col-md-2">
-			<label for=remainingHours class="control-label">Remaining Hours</label> <br>
+			<label for=remainingDevHours class="control-label">Remaining Hours</label> <br>
 			<form:input class="form-control" type="text" required="true"
-				path="remainingHours" placeholder="" />
+				path="remainingDevHours" placeholder="" />
 		</div>
 
 		<form:input path="id" type="hidden" />

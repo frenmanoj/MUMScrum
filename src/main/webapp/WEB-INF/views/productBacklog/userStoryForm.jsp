@@ -21,13 +21,13 @@
 		</div>
 
 		<div class="form-group">
-			<label class="control-label" for="estimatedHours">Estimated Hours</label>
-			<form:input id="estimatedHours" path="estimatedHours" class="form-control" />
+			<label class="control-label" for="estimatedDevHours">Estimated Hours</label>
+			<form:input id="estimatedDevHours" path="estimatedDevHours" class="form-control" />
 		</div>
 
 		<div class="form-group">
-			<label class="control-label" for="remainingHours">Remaining Hours</label>
-			<form:input id="remainingHours" path="remainingHours" class="form-control"/>
+			<label class="control-label" for="remainingDevHours">Remaining Hours</label>
+			<form:input id="remainingDevHours" path="remainingDevHours" class="form-control"/>
 		</div>
 		
 		<form:input path="assignedDate" type="hidden"/>

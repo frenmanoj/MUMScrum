@@ -26,13 +26,51 @@ public class UserStory {
 	private String description;
 
 	@Column
-	private double estimatedHours;
+	private double estimatedDevHours;
 
 	@Column
-	private double remainingHours;
+	private double remainingDevHours;
+
+	@Column
+	private double estimatedTestHours;
+
+	@Column
+	private double remainingTestHours;
 
 	@Column
 	private Date createdDate;
+
+	public double getEstimatedDevHours() {
+		return estimatedDevHours;
+	}
+
+	public void setEstimatedDevHours(double estimatedDevHours) {
+		this.estimatedDevHours = estimatedDevHours;
+	}
+
+	public double getRemainingDevHours() {
+		return remainingDevHours;
+	}
+
+	public void setRemainingDevHours(double remainingDevHours) {
+		this.remainingDevHours = remainingDevHours;
+	}
+
+	public double getEstimatedTestHours() {
+		return estimatedTestHours;
+	}
+
+	public void setEstimatedTestHours(double estimatedTestHours) {
+		this.estimatedTestHours = estimatedTestHours;
+	}
+
+	public double getRemainingTestHours() {
+		return remainingTestHours;
+	}
+
+	public void setRemainingTestHours(double remainingTestHours) {
+		this.remainingTestHours = remainingTestHours;
+	}
 
 	@Column
 	private Date assignedDate;
@@ -105,24 +143,6 @@ public class UserStory {
 		this.description = description;
 	}
 
-	public double getEstimatedHours() {
-		return estimatedHours;
-	}
-
-	public void setEstimatedHours(double estimatedHours) {
-
-		this.estimatedHours = estimatedHours;
-	}
-
-	public double getRemainingHours() {
-		return remainingHours;
-	}
-
-	public void setRemainingHours(double remainingHours) {
-
-		this.remainingHours = remainingHours;
-	}
-
 	public Date getCreatedDate() {
 		return createdDate;
 	}
@@ -152,7 +172,7 @@ public class UserStory {
 	public String toString() {
 
 		return "[Title: " + getTitle() + ", Description: " + getDescription()
-				+ ", Estimated Hours: " + getEstimatedHours()
-				+ ", Remaining Hours: " + getRemainingHours() + "]";
+				+ ", Estimated Hours: " + getEstimatedDevHours()
+				+ ", Remaining Hours: " + getRemainingDevHours() + "]";
 	}
 }
