@@ -1,8 +1,8 @@
 package edu.mum.mscrum.controller;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -10,14 +10,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import edu.mum.mscrum.model.Release;
 import edu.mum.mscrum.model.Sprint;
 import edu.mum.mscrum.model.UserStory;
 import edu.mum.mscrum.service.ReleaseService;
 import edu.mum.mscrum.service.SprintService;
 import edu.mum.mscrum.service.UserStoryService;
+import edu.mum.mscrum.service.ViewBurndownService;
 
 @Controller
 @RequestMapping("/productBacklog/{productBacklogId}/releases/{releaseBacklogId}/sprint")
@@ -157,5 +158,27 @@ public class SprintController {
 		 * redirects to the path relative to the current path
 		 */
 		return "redirect:/sprint/" + sprintId + "/UserStories";
+	}
+	
+	@Autowired
+	private ViewBurndownService viewBurndownService;
+
+	@RequestMapping("/viewBurndown/")
+	public String showBurnDownChart() {
+
+		// map.put("viewBurnDown", new ViewBurndown());
+		return "/viewBurndown/viewBurndown";
+	}
+
+	@RequestMapping("/viewBurndown/getData")
+	public @ResponseBody Map<Integer, Integer> getBurnDownChartData() {
+
+		Map<Integer, Integer> chartData = new LinkedHashMap<Integer, Integer>();
+		chartData.put(40, 40);
+		chartData.put(32, 30);
+		chartData.put(24, 20);
+		chartData.put(16, 5);
+
+		return chartData;
 	}
 }

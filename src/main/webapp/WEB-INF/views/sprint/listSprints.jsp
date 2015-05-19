@@ -12,7 +12,8 @@
 <body>
 
 	<%@ include file="../common/header.jsp"%>
-
+ 
+    <a class="btn btn-primary" href="viewBurndown/">View Burndown Chart</a>
 	<div id="sprintDialog" style="display: none; padding-left: 30px; padding-right:30px">
 		<%@ include file="sprintForm.jsp"%>
 	</div>

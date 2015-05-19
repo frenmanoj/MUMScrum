@@ -15,7 +15,9 @@
 		<hibernate-version>4.2.7.Final</hibernate-version>
 		<mysql-version>5.1.27</mysql-version>
 		<apache-connection-pooling-version>1.4</apache-connection-pooling-version>
+		
 	</properties>
+	
 	<dependencies>
 		<!-- Spring -->
 		<dependency>
@@ -114,6 +116,13 @@
 			<artifactId>spring-security-taglibs</artifactId>
 			<version>${spring.security.version}</version>
 		</dependency>
+       <!-- Jackson JSON -->
+	<dependency>
+		<groupId>org.codehaus.jackson</groupId>
+		<artifactId>jackson-mapper-asl</artifactId>
+		<version>1.9.10</version>
+	</dependency>  
+
 
 	</dependencies>
 	<build>
