@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
@@ -30,6 +31,18 @@ public class Sprint {
 	private Release releaseBacklog;
 
 	private Set<UserStory> userStories = new HashSet<UserStory>();
+	
+	
+    private Set<Burndown> burndownlists = new HashSet<Burndown>();
+	
+	
+	
+    @OneToMany(mappedBy="sprint", fetch=FetchType.EAGER)
+	@Cascade({CascadeType.ALL})
+	public Set<Burndown> getBurndownlists() {
+		return burndownlists;
+	}
+
 
 	@ManyToOne
 	@JoinColumn(name = "release_id", nullable = true)
@@ -85,5 +98,11 @@ public class Sprint {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	public void setBurndownlists(Set<Burndown> burndownlists) {
+		this.burndownlists = burndownlists;
+	}
+	
+	
 
 }

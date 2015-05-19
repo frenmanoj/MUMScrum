@@ -12,8 +12,7 @@
 <body>
 
 	<%@ include file="../common/header.jsp"%>
- 
-    <a class="btn btn-primary" href="viewBurndown/">View Burndown Chart</a>
+     
 	<div id="sprintDialog" style="display: none; padding-left: 30px; padding-right:30px">
 		<%@ include file="sprintForm.jsp"%>
 	</div>
@@ -39,8 +38,8 @@
 				<tr>
 					<th width="5%">S.N</th>
 					<th width="30%">Title</th>
-					<th width="45%">Description</th>
-					<th width="15%">Actions</th>
+					<th width="35%">Description</th>					
+					<th width="30%">Actions</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -50,8 +49,10 @@
 						<td><c:out value="${loopCounter.count}" /></td>
 						<td><a href="${sprint.id}/userStories/"><c:out value="${sprint.title}" /></a></td>
 						<td><c:out value="${sprint.description}" /></td>
-
+                         
 						<td><nobr>
+						       <a class="btn btn-primary btn-sm" href="${sprint.id}/viewBurndown/"> 
+						       <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> View Burndown Chart</a>
 								<button class="btn btn-primary btn-sm"
 									onclick="editSprint(${sprint.id});">
 

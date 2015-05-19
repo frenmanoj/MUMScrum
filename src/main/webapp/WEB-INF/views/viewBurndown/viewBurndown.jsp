@@ -23,7 +23,7 @@
 
 	<%@ include file="../common/header.jsp"%>
 	<%@ include file="../common/footer.jsp"%>
-
+    <input id="sprintName" type="hidden" value="${sprint.title}">
 </body>
 
 <style type="text/css">
@@ -63,6 +63,7 @@
 		// Set up the chart
 		var chartOptions = {
 			chart : {
+				title: 'title1',
 				renderTo : 'container',
 				type : 'column',
 				margin : 75,
@@ -74,10 +75,7 @@
 					viewDistance : 25
 				}
 			},
-			title : {
-				text : 'BurnDown Chart'
-			},
-
+			
 			credits : {
 				enabled : false
 			},
@@ -111,6 +109,9 @@
 				tickInterval : 1
 
 			},
+			 title: {
+		            text: 'Burndown Chart for '+ $("#sprintName").val()
+		        },
 
 			series : [ {
 				name : 'Days',
@@ -136,6 +137,8 @@
 			});
 
 			chart = new Highcharts.Chart(chartOptions);
+			
+			
 
 			showValues();
 		});
@@ -143,6 +146,7 @@
 		function showValues() {
 			$('#R0-value').html(chart.options.chart.options3d.alpha);
 			$('#R1-value').html(chart.options.chart.options3d.beta);
+			
 		}
 
 		// Activate the sliders
@@ -158,6 +162,12 @@
 		});
 
 	});
+	
+	//change Title
+	
+	
+	
+	
 </script>
 
 <script src="http://code.highcharts.com/highcharts.js"></script>

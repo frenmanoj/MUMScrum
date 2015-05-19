@@ -15,13 +15,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import edu.mum.mscrum.dao.BurndownDao;
+import edu.mum.mscrum.dao.impl.BurndownDaoImpl;
+import edu.mum.mscrum.model.Burndown;
 import edu.mum.mscrum.model.Release;
 import edu.mum.mscrum.model.Sprint;
 import edu.mum.mscrum.model.UserStory;
 import edu.mum.mscrum.service.ReleaseService;
 import edu.mum.mscrum.service.SprintService;
 import edu.mum.mscrum.service.UserStoryService;
-import edu.mum.mscrum.service.ViewBurndownService;
+import edu.mum.mscrum.service.BurndownService;
 
 @Controller
 @RequestMapping("/productBacklog/{productBacklogId}/releases/{releaseBacklogId}/sprints")
@@ -173,24 +176,27 @@ public class SprintController {
 	}
 
 	@Autowired
-	private ViewBurndownService viewBurndownService;
+	private BurndownService burndownService;
 
-	@RequestMapping("/viewBurndown/")
-	public String showBurnDownChart() {
-
-		// map.put("viewBurnDown", new ViewBurndown());
-		return "/viewBurndown/viewBurndown";
+	@RequestMapping("/{sprintId}/viewBurndown/")
+	public String showBurnDownChart(@PathVariable Long sprintId, Map<String, Object> map) {
+		Sprint sprint = sprintService.getById(sprintId);
+		map.put("sprint", sprint);
+		return "viewBurndown/viewBurndown";
 	}
 
-	@RequestMapping("/viewBurndown/getData")
-	public @ResponseBody Map<Integer, Integer> getBurnDownChartData() {
-
+	@RequestMapping("/{sprintId}/viewBurndown/getData")
+	public @ResponseBody Map<Integer, Integer> getBurnDownChartData(@PathVariable("sprintId") Long sprintId) {
+		
 		Map<Integer, Integer> chartData = new LinkedHashMap<Integer, Integer>();
-		chartData.put(40, 40);
-		chartData.put(32, 30);
-		chartData.put(24, 20);
-		chartData.put(16, 5);
-
+		Sprint sprint =  sprintService.getById(sprintId);		
+	
+		for(Burndown bd:sprint.getBurndownlists())
+		{
+			chartData.put(bd.getDay(), bd.getRemainingWork());
+			
+		}
+		
 		return chartData;
 	}
 }
