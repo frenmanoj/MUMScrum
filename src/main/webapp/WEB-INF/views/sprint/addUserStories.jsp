@@ -38,7 +38,8 @@ th {
 						<th width="30%">Description</th>
 						<th width="15%">Estimated Hours</th>
 						<th width="15%">Remaining Hours</th>
-						<th width="15%"><input type="checkbox" id="select-all"></th>
+						<th width="15%">Select All <br>
+							<input type="checkbox" id="select-all"></th>
 					</tr>
 				</thead>
 				<tbody>
