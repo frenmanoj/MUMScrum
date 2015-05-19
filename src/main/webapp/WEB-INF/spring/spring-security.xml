@@ -9,10 +9,10 @@
 
 	<http auto-config="true" use-expressions="true">
 
-		<!-- <intercept-url pattern="/productBacklog/**" access="hasRole('ROLE_PRODUCT_OWNER')" />
+		<intercept-url pattern="/productBacklog/**" access="hasRole('ROLE_PRODUCT_OWNER')" />
 
 		<intercept-url pattern="/login*" access="isAnonymous()" />
-		<intercept-url pattern="/**" access="isAuthenticated()" /> -->
+		<intercept-url pattern="/**" access="isAuthenticated()" />
 
 
 		<form-login login-page="/login" default-target-url="/index"
