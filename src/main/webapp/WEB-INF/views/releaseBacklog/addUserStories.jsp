@@ -27,7 +27,7 @@ th {
 			List Of User Stories for <b>${release.name}</b>
 		</p>
 
-		<form action="addUserStories" method="post">
+		<form action="addUserStories" method="post" onsubmit="return isRowSelected();">
 
 			<table class="table table-condensed table-striped table-bordered"
 				id="user-stories-table">
@@ -82,6 +82,17 @@ th {
 				}
 			});
 		});
+		
+		function isRowSelected() {
+			
+			var atLeastOneIsChecked = $('#user-stories-table tbody :checkbox:checked').length > 0;
+
+			if ( !atLeastOneIsChecked ) {
+				alert( "No user stories selected to assign!");
+			}
+			
+			return atLeastOneIsChecked;
+		}
 	</script>
 
 	<!--  It is advised to put the <script> tags at the end of the document body so they don't block rendering of the page -->
