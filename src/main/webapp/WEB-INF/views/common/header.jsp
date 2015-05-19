@@ -69,6 +69,8 @@ html {
 				<ul class="nav navbar-nav">
 
 					<li class="active"><a href="/mscrum/productBacklog/">Products</a></li>
+					<li><a href="/mscrum/selectProduct">Releases</a></li>
+					<li><a href="/mscrum/selectRelease">Sprints</a></li>
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#">HR <span class="caret"></span></a>
 						<ul class="dropdown-menu">
