@@ -67,6 +67,7 @@ public class SprintController {
 		Set<UserStory> userStories = sprint.getUserStories();
 
 		map.put("sprint", sprint);
+		map.put("userStory", new UserStory());
 		map.put("userStories", userStories);
 
 		return "sprint/listUserStories";
@@ -207,5 +208,16 @@ public class SprintController {
 		}
 
 		return chartData;
+	}
+	
+	@RequestMapping("/{sprintId}/userStories/{userStoryId}/assignDeveloper")
+	public String assignDeveloperUserStory(@PathVariable("userStoryId") Long userStoryId,
+			Map<String, Object> map) {
+		
+		UserStory userStory = userStoryService.getById(userStoryId);
+		
+		map.put("userStory", userStory);
+
+		return "/sprint/assignDeveloperUserStoryForm";
 	}
 }

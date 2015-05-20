@@ -9,6 +9,11 @@
 <body>
 
 	<%@ include file="../common/header.jsp"%>
+	
+	<div id="assignDeveloperDialog"
+		style="display: none; padding-left: 30px; padding-right: 30px">
+		<%@ include file="assignDeveloperUserStoryForm.jsp"%>
+	</div>
 
 	<div style="margin: 0 auto;">
 
@@ -23,10 +28,11 @@
 			<thead>
 				<tr>
 					<th width="5%">S.N</th>
-					<th width="20%">Title</th>
+					<th width="15%">Title</th>
 					<th width="30%">Description</th>
-					<th width="15%">Estimated Hours</th>
-					<th width="15%">Remaining Hours</th>
+					<th width="10%">Estimated Hours</th>
+					<th width="10%">Remaining Hours</th>
+					<th width="15%">Assign Developer</th>
 					<th width="15%">Actions</th>
 				</tr>
 			</thead>
@@ -39,6 +45,13 @@
 						<td>${userStory.description}</td>
 						<td>${userStory.estimatedDevHours}</td>
 						<td>${userStory.remainingDevHours}</td>
+						<td><a id="assign-confirm" class="btn btn-primary btn-sm"
+							onclick="assignDeveloper(${userStory.id});"> 
+							
+							<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+								Assign
+							</a></td>
+						
 						<td><a id="delete-confirm" class="btn btn-primary btn-sm"
 							href="delete/${userStory.id}"> <span
 								class="glyphicon glyphicon-remove" aria-hidden="true"></span>
@@ -61,5 +74,7 @@
 	</script>
 
 	<!--  It is advised to put the <script> tags at the end of the document body so they don't block rendering of the page -->
+	<script type="text/javascript"
+		src='<c:url value="/web-resources/js/js-for-listUserStories.js"/>'></script>
 </body>
 </html>

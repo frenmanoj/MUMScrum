@@ -23,3 +23,29 @@ function editUserStory(id) {
 		});
 	});
 }
+
+function assignDeveloper(id) {
+
+	$.get( id + "/assignDeveloper", function(result) {
+
+		BootstrapDialog.show({
+			title : 'Assign Developer to User Story',
+			message : $(result),
+			buttons : [ {
+				label : 'Cancel',
+				action : function(dialogRef) {
+
+					resetDialog($('#assignDeveloperUserStoryForm'));
+					dialogRef.close();
+				}
+			}, {
+				label : 'Save',
+				cssClass : 'btn-primary',
+				action : function(dialogRef) {
+
+					$('#assignDeveloperUserStoryForm').submit();
+				}
+			} ]
+		});
+	});
+}

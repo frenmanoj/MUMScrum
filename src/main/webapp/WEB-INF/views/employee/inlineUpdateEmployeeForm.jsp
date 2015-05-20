@@ -3,7 +3,7 @@
 
 
 <form:form class="form-horizontal" action="save" method="post"
-	commandName="employee" >
+	commandName="employee">
 
 	<div class="col-md-8">
 		<div class="col-md-6">
@@ -63,10 +63,15 @@
 
 	</div>
 
+	<div class="col-sm-6">
+		<div class="col-sm-6" style="margin-top: 27px;">
+			<input type="submit" name="save" value="Save" class="btn btn-primary"
+				style="width: 7em;" />
+		</div>
 
-	<div class="col-sm-6" style="margin-top: 27px;">
-		<input type="submit" name="save" value="Save" class="btn btn-primary"
-			style="width: 7em;" />
+		<div class="col-sm-6" style="margin-top: 27px;">
+			<a class="btn btn-primary " href="../Details/" style="width: 7em;">Cancel</a>
+		</div>
 	</div>
 
 </form:form>
