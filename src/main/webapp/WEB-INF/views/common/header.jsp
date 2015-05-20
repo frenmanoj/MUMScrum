@@ -86,8 +86,8 @@ html {
 							class="glyphicon glyphicon-user"></span> <b>${pageContext.request.userPrincipal.name}</b>
 					</a>
 						<ul class="dropdown-menu">
-							<li><a href="#"><span
-									class="glyphicon glyphicon-eye-open"></span> &nbsp;View Profile</a></li>
+							<li><a href="/mscrum/employee/${pageContext.request.userPrincipal.name}/Details/"><span
+									class="glyphicon glyphicon-eye-open"></span> &nbsp;Update Profile</a></li>
 							<li><a href="javascript:formSubmit()"><span
 									class="glyphicon glyphicon-log-out"></span> &nbsp;Logout</a></li>
 						</ul></li>
