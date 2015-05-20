@@ -66,7 +66,7 @@ public class UserStoryController {
 		userStory.setRemainingDevHours(newUserStory.getRemainingDevHours());
 		userStoryService.save(userStory);
 
-		redir.addFlashAttribute("message", "New userstory added!!!");
+		redir.addFlashAttribute("message", "UserStory Saved!");
 
 		/*
 		 * Note that there is no slash "/" right after "redirect:" So, it

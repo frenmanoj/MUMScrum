@@ -73,7 +73,7 @@ public class ReleaseController {
 
 		releaseBacklogService.save(releaseBackog);
 
-		redir.addFlashAttribute("message", "New Release Backlog added!!!");
+		redir.addFlashAttribute("message", "Release Backlog saved!");
 
 		return "redirect:listReleaseBacklog";
 	}

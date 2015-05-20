@@ -115,7 +115,7 @@ public class SprintController {
 
 		sprintService.save(sprint);
 
-		redir.addFlashAttribute("message", "New sprint added!!!");
+		redir.addFlashAttribute("message", "Sprint Saved!");
 
 		/*
 		 * Note that there is no slash "/" right after "redirect:" So, it

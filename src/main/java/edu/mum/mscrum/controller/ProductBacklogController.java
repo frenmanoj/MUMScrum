@@ -117,7 +117,7 @@ public class ProductBacklogController {
 
 		productBacklogService.save(productBacklog);
 
-		redir.addFlashAttribute("message", "New product backlog added!!!");
+		redir.addFlashAttribute("message", "Product backlog Saved!");
 
 		/*
 		 * Note that there is no slash "/" right after "redirect:" So, it
