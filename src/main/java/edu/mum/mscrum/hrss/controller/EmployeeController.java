@@ -138,14 +138,9 @@ public class EmployeeController {
 
 		Employee old_employee = user.getEmployee();
 
-		old_employee.setFirstName(employee.getFirstName());
-		old_employee.setLastName(employee.getLastName());
-		old_employee.setEmail(employee.getEmail());
-		old_employee.setStreet(employee.getStreet());
-		old_employee.setPhone(employee.getPhone());
-		old_employee.setSsn(employee.getSsn());
-		old_employee.setCity(employee.getCity());
-		old_employee.setState(employee.getState());
+		double oldSalary = old_employee.getSalary();
+		copyProperties(employee, old_employee);
+		old_employee.setSalary(oldSalary);
 
 		employeeService.save(old_employee);
 
