@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import edu.mum.mscrum.hrss.model.Employee;
 import edu.mum.mscrum.hrss.model.Role;
+import edu.mum.mscrum.hrss.model.User;
 import edu.mum.mscrum.hrss.service.EmployeeService;
 import edu.mum.mscrum.hrss.service.RoleService;
+import edu.mum.mscrum.hrss.service.UserService;
 
 @Controller
 @RequestMapping("/employee")
@@ -24,6 +26,9 @@ public class EmployeeController {
 
 	@Autowired
 	private EmployeeService employeeService;
+
+	@Autowired
+	private UserService userService;
 
 	@RequestMapping(value = { "/", "/listEmployees" })
 	public String listEmployees(Map<String, Object> map) {
@@ -99,4 +104,56 @@ public class EmployeeController {
 		destination.setZipcode(source.getZipcode());
 		destination.setSalary(source.getSalary());
 	}
+	@RequestMapping("/{userName}/Details/")
+	public String viewEmployeeDetails(@PathVariable String userName,
+			Map<String, Object> map) {
+
+		User user = userService.getUser(userName);
+
+		Employee employee = user.getEmployee();
+
+		map.put("employee", employee);
+
+		return "/employee/viewEmployeeDetails";
+	}
+
+	@RequestMapping("/{userName}/Details/update")
+	public String getEmployeeDetails(@PathVariable String userName,
+			Map<String, Object> map) {
+
+		User user = userService.getUser(userName);
+
+		Employee employee = user.getEmployee();
+
+		map.put("employee", employee);
+
+		return "/employee/updateEmployeeDetails";
+	}
+
+	@RequestMapping(value = "/{userName}/Details/save", method = RequestMethod.POST)
+	public String updateEmployee(@PathVariable String userName,
+			@ModelAttribute("employee") Employee employee, BindingResult result) {
+
+		User user = userService.getUser(userName);
+
+		Employee old_employee = user.getEmployee();
+
+		old_employee.setFirstName(employee.getFirstName());
+		old_employee.setLastName(employee.getLastName());
+		old_employee.setEmail(employee.getEmail());
+		old_employee.setStreet(employee.getStreet());
+		old_employee.setPhone(employee.getPhone());
+		old_employee.setSsn(employee.getSsn());
+		old_employee.setCity(employee.getCity());
+		old_employee.setState(employee.getState());
+
+		employeeService.save(old_employee);
+
+		/*
+		 * Note that there is no slash "/" right after "redirect:" So, it
+		 * redirects to the path relative to the current path
+		 */
+		return "redirect:/employee/" + userName + "/Details/";
+	}
+
 }
