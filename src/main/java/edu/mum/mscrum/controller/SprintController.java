@@ -202,7 +202,7 @@ public class SprintController {
 		Sprint sprint = sprintService.getById(sprintId);
 
 		for (Burndown bd : sprint.getBurndownlists()) {
-			chartData.put(bd.getDay(), bd.getRemainingWork());
+			chartData.put(bd.getTotalPlannedEffort(), bd.getTotalRemainingEffort()); 
 
 		}
 

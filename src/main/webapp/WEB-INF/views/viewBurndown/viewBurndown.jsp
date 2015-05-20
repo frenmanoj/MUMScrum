@@ -13,8 +13,6 @@
 	Array.prototype.insert = function(index, item) {
 		this.splice(index, 0, item);
 	};
-	
-	
 </script>
 
 </head>
@@ -23,7 +21,8 @@
 
 	<%@ include file="../common/header.jsp"%>
 	<%@ include file="../common/footer.jsp"%>
-    <input id="sprintName" type="hidden" value="${sprint.title}">
+	<input id="sprintName" type="hidden" value="${sprint.title}">
+	
 </body>
 
 <style type="text/css">
@@ -63,7 +62,6 @@
 		// Set up the chart
 		var chartOptions = {
 			chart : {
-				title: 'title1',
 				renderTo : 'container',
 				type : 'column',
 				margin : 75,
@@ -75,7 +73,7 @@
 					viewDistance : 25
 				}
 			},
-			
+
 			credits : {
 				enabled : false
 			},
@@ -87,16 +85,16 @@
 			},
 
 			yAxis : {
-				max : 50,
+				
 				labels : {
 					format : '{value} hrs'
 				},
 
-				tickInterval : 1,
+				tickInterval : 5,
 
 				title : {
 					enabled : true,
-					text : 'Estimated Hours',
+					text : 'Work Remaining',
 					style : {
 						fontWeight : 'normal'
 					}
@@ -104,21 +102,25 @@
 			},
 
 			xAxis : {
+				max : 7,
+				labels : {
+					format : 'Day  {value}'
+				},
 				endOnTick : true,
 				minTickInterval : 1,
 				tickInterval : 1
 
 			},
-			 title: {
-		            text: 'Burndown Chart for '+ $("#sprintName").val()
-		        },
+			title : {
+				text : 'Burndown Chart for ' + $("#sprintName").val()
+			},
 
 			series : [ {
-				name : 'Days',
+				name : 'Remaining Effort',
 				data : []
 			}, {
 				type : 'spline',
-				name : 'velocity',
+				name : 'Planned Effort',
 				data : [],
 				marker : {
 					lineWidth : 2,
@@ -129,16 +131,18 @@
 		};
 
 		$.get("getData", function(results) {
-
+			var counter = 0;
 			$.each(results, function(key, value) {
 
 				chartOptions.series[0].data.insert(0, parseFloat(value));
 				chartOptions.series[1].data.insert(0, parseFloat(key));
+
+				counter = key;
 			});
 
+			
 			chart = new Highcharts.Chart(chartOptions);
-			
-			
+			chart.yAxis[0].update({ max: counter }); 
 
 			showValues();
 		});
@@ -146,7 +150,7 @@
 		function showValues() {
 			$('#R0-value').html(chart.options.chart.options3d.alpha);
 			$('#R1-value').html(chart.options.chart.options3d.beta);
-			
+
 		}
 
 		// Activate the sliders
@@ -162,12 +166,8 @@
 		});
 
 	});
-	
+
 	//change Title
-	
-	
-	
-	
 </script>
 
 <script src="http://code.highcharts.com/highcharts.js"></script>

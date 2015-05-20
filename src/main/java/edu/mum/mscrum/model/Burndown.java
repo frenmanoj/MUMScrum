@@ -15,8 +15,8 @@ import javax.persistence.Table;
 public class Burndown {
 
 	private Long id;
-	private int remainingWork;
-	private int day;
+	private int totalRemainingEffort;
+	private int totalPlannedEffort;
 
 	private Sprint sprint;
    
@@ -40,23 +40,23 @@ public class Burndown {
 		this.sprint = sprint;
 	}
 
-	@Column(nullable = true)
-	public int getRemainingWork() {
-		return remainingWork;
+	@Column(name="total_remaining_effort",nullable = true)
+	public int getTotalRemainingEffort() {
+		return totalRemainingEffort;
 	}
 
-	public void setRemainingWork(int remainingWork) {
-		this.remainingWork = remainingWork;
+	public void setTotalRemainingEffort(int totalRemainingEffort) {
+		this.totalRemainingEffort = totalRemainingEffort;
 	}
 
-	@Column(nullable = true)
-	public int getDay() {
-		return day;
+	@Column(name="total_planned_effort",nullable = true)
+	public int getTotalPlannedEffort() {
+		return totalPlannedEffort;
 	}
 
 	
-	public void setDay(int day) {
-		this.day = day;
+	public void setTotalPlannedEffort(int totalPlannedEffort) {
+		this.totalPlannedEffort = totalPlannedEffort;
 	}
 
 	
