@@ -30,10 +30,31 @@ function formatMyDate(dateField, length, inputFormat, outputFormat) {
 			dateString = dateString.substring(0, length);
 		}
 
-		date = jQuery.datepicker.parseDate( inputFormat, dateString);
+		date = jQuery.datepicker.parseDate(inputFormat, dateString);
 
-		dateString = jQuery.datepicker.formatDate( outputFormat, date);
+		dateString = jQuery.datepicker.formatDate(outputFormat, date);
 
 		dateField.val(dateString);
 	}
+}
+
+function confirmDelete(anchorElem, message) {
+
+	$(anchorElem).click(function(e) {
+
+		e.preventDefault();
+
+		BootstrapDialog.confirm({
+			title : 'Confirmation!',
+			message : '' + message,
+			closable: true,
+			callback : function(result) {
+				
+				if (result) {
+					window.location.href = $(anchorElem).attr('href');
+				}
+			}
+		});
+	});
+
 }

@@ -110,12 +110,7 @@
 
 <script>
 	function validateForm() {
+
+		return true;
 	}
-
-	var password1 = $('#password1').val();
-	var password2 = $('#password2').val();
-
-	console.log(password1 + ":" + password2);
-
-	return false;}
 </script>

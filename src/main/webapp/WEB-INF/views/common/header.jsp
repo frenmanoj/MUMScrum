@@ -14,6 +14,9 @@
 	href='<c:url value="/web-resources/css/lib/dataTables.bootstrap.css"/>'>
 
 <link rel="stylesheet"
+	href='<c:url value="/web-resources/bootstrap3-dialog/css/bootstrap-dialog.css"/>'>
+
+<link rel="stylesheet"
 	href='<c:url value="/web-resources/css/customize.css"/>'>
 
 <link rel="stylesheet"
@@ -113,6 +116,9 @@ html {
 		src='<c:url value="/web-resources/js/lib/jquery-ui-1.10.4.custom.js"/>'></script>
 	<script type="text/javascript"
 		src='<c:url value="/web-resources/js/lib/jquery.ui.datepicker.js"/>'></script>
+
+	<script type="text/javascript"
+		src='<c:url value="/web-resources/bootstrap3-dialog/js/bootstrap-dialog.js"/>'></script>
 
 	<script type="text/javascript"
 		src='<c:url value="/web-resources/js/common.js"/>'></script>

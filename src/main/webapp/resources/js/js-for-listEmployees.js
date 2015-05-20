@@ -1,28 +1,27 @@
-function addEmployee() {
-	$('#employeeDialog').dialog("option", "title", 'Add Employee');
-	$('#employeeDialog').dialog('open');
-}
 
 function editEmployee(id) {
 
 	$.get("get/" + id, function(result) {
 
-		$("#employeeDialog").html(result);
+		BootstrapDialog.show({
+			title : 'Edit Employee',
+			message : $(result),
+			buttons : [ {
+				label : 'Save',
+				action : function(dialogRef) {
 
-		$('#employeeDialog').dialog("option", "title", 'Edit Employee');
+					$('#employeeForm').submit();
+				}
+			}, {
+				label : 'Cancel',
+				action : function(dialogRef) {
 
-		$("#employeeDialog").dialog('open');
+					resetDialog($('#employeeForm'));
+					dialogRef.close();
+				}
+			} ]
+		});
 
-		initializeDatePicker();
-	});
-}
-
-function initializeDatePicker() {
-	$(".datepicker").datepicker({
-		dateFormat : "yy-mm-dd",
-		changeMonth : true,
-		changeYear : true,
-		showButtonPanel : true
 	});
 }
 
@@ -30,31 +29,3 @@ function resetDialog(form) {
 
 	form.find("input").val("");
 }
-
-$(document).ready(function() {
-
-	$('#employeeDialog').dialog({
-
-		autoOpen : false,
-		position : 'center',
-		modal : true,
-		resizable : false,
-		width : 460,
-		buttons : {
-			"Save" : function() {
-				$('#employeeForm').submit();
-			},
-			"Cancel" : function() {
-				$(this).dialog('close');
-			}
-		},
-		close : function() {
-
-			resetDialog($('#employeeForm'));
-
-			$(this).dialog('close');
-		}
-	});
-
-	initializeDatePicker();
-});

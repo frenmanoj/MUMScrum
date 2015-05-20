@@ -5,8 +5,7 @@
 <head>
 <title>List Of Employees</title>
 
-<link rel="stylesheet"
-	href='<c:url value="/web-resources/bootstrap3-dialog/css/bootstrap-dialog.css"/>'>
+
 </head>
 
 <body>
@@ -24,7 +23,8 @@
 	</div>
 
 	<br>
-	<div style="display:block;" id="employee-list-container">
+	<br>
+	<div style="display: block;" id="employee-list-container">
 
 		<p style="font-size: 21px; color: #333;">List Of Employees</p>
 
@@ -57,11 +57,9 @@
 									Edit
 								</button>
 
-								<a class="btn btn-primary btn-sm"
-									onclick="return confirm('Are you sure you want to delete this employee?');"
-									href="delete/${employee.id}"> <span
-									class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-									Delete
+								<a id="delete-confirm" href="delete/${employee.id}"
+									class="btn btn-primary btn-sm"> <span
+									class="glyphicon glyphicon-remove" aria-hidden="true"></span>Delete
 								</a>
 
 							</nobr></td>
@@ -69,7 +67,6 @@
 				</c:forEach>
 			</tbody>
 		</table>
-
 	</div>
 
 	<%@ include file="../common/footer.jsp"%>
@@ -87,25 +84,13 @@
 			 $('#inlineEmployeeDialog').slideToggle();
 			 $('#employee-list-container').slideToggle();
 		 });
+		 
+		 confirmDelete( $("#delete-confirm"), "Are you sure you want to delete this employee?");
 	});
-	
 	
 	</script>
 
-	<!--  It is advised to put the <script> tags at the end of the document body so they don't block rendering of the page -->
-	<%-- <script type="text/javascript"
-		src='<c:url value="/web-resources/js/lib/jquery-1.10.2.js"/>'></script> --%>
-	<script type="text/javascript"
-		src='<c:url value="/web-resources/js/lib/jquery-ui-1.10.4.custom.js"/>'></script>
-	<script type="text/javascript"
-		src='<c:url value="/web-resources/js/lib/jquery.ui.datepicker.js"/>'></script>
 	<script type="text/javascript"
 		src='<c:url value="/web-resources/js/js-for-listEmployees.js"/>'></script>
-
-	<script type="text/javascript"
-		src='<c:url value="/web-resources/bootstrap3-dialog/js/bootstrap-dialog.js"/>'></script>
-
-	<script type="text/javascript"
-		src='<c:url value="/web-resources/js/common.js"/>'></script>
 </body>
 </html>

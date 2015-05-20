@@ -50,27 +50,22 @@ public class EmployeeController {
 	public String saveEmployee(@ModelAttribute("employee") Employee employee,
 			BindingResult result) {
 
-		System.out.println(employee.getUser().getUsername());
-		System.out.println("Employee Id: " + employee.getId());
-		System.out.println("User Id: " + employee.getUser().getId());
+		if (employee.getId() != null) {
 
-		String roleId = employee.getUser().getRoleId();
+			Employee dbEmployee = employeeService.getById(employee.getId());
 
-		Role role = roleService.getRole(Long.valueOf(roleId));
+			copyProperties(employee, dbEmployee);
 
-		employee.getUser().getRoles().add(role);
+			employeeService.save(dbEmployee);
+		} else {
 
-		employeeService.save(employee);
+			String roleId = employee.getUser().getRoleId();
+			Role role = roleService.getRole(Long.valueOf(roleId));
 
-		System.out.println(":::: AFTER :::");
-		System.out.println(employee.getUser().getUsername());
-		System.out.println("Employee Id: " + employee.getId());
-		System.out.println("User Id: " + employee.getUser().getId());
+			employee.getUser().addRole(role);
+			employeeService.save(employee);
+		}
 
-		/*
-		 * Note that there is no slash "/" right after "redirect:" So, it
-		 * redirects to the path relative to the current path
-		 */
 		return "redirect:listEmployees";
 	}
 
@@ -91,4 +86,17 @@ public class EmployeeController {
 		return "redirect:/employee/listEmployees";
 	}
 
+	private void copyProperties(Employee source, Employee destination) {
+
+		destination.setSsn(source.getSsn());
+		destination.setFirstName(source.getFirstName());
+		destination.setLastName(source.getLastName());
+		destination.setEmail(source.getEmail());
+		destination.setPhone(source.getPhone());
+		destination.setStreet(source.getStreet());
+		destination.setCity(source.getCity());
+		destination.setState(source.getState());
+		destination.setZipcode(source.getZipcode());
+		destination.setSalary(source.getSalary());
+	}
 }
