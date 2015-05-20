@@ -12,12 +12,11 @@
 		onsubmit="return validateProduct();">
 
 
-		<div class="col-md-2">
+		<div class="col-md-3">
 			<select class="form-control" id="select-product"
 				name="productBacklogId">
 
-				<option value="0">Select Product
-					Backlog :</option>
+				<option value="0">-- Select Product Backlog--</option>
 				<c:forEach items="${productBacklogList}" var="productBacklog">
 					<option value="${productBacklog.id}">${productBacklog.title}</option>
 				</c:forEach>
@@ -25,7 +24,7 @@
 			</select>
 		</div>
 
-		<div class="col-md-10">
+		<div class="col-md-9">
 			<input type="submit" value="View Releases" class="btn btn-primary" />
 		</div>
 

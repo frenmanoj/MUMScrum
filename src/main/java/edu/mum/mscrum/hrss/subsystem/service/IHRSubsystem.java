@@ -1,6 +1,6 @@
-package edu.mum.mscrum.hrss.subsystem;
+package edu.mum.mscrum.hrss.subsystem.service;
 
-import java.util.List;
+import java.util.Set;
 
 import edu.mum.mscrum.hrss.model.Employee;
 import edu.mum.mscrum.model.Release;
@@ -15,8 +15,8 @@ public interface IHRSubsystem {
 
 	public void assignScrumMasterToRelease(Release release, Employee scrumMaster);
 
-	public List<Employee> getDevelopersList();
+	public Set<Employee> getDevelopersList();
 
-	public List<Employee> getTestersList();
+	public Set<Employee> getTestersList();
 
 }
