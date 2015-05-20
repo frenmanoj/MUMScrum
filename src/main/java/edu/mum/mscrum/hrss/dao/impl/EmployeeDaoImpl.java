@@ -8,7 +8,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import edu.mum.mscrum.dao.impl.GenericHibernateDao;
+import edu.mum.mscrum.common.dao.impl.GenericHibernateDao;
 import edu.mum.mscrum.hrss.dao.EmployeeDao;
 import edu.mum.mscrum.hrss.model.Employee;
 

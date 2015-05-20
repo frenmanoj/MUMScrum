@@ -13,27 +13,23 @@
 
 	<%@ include file="../common/header.jsp"%>
 
-	<div id="employeeDialog" style="display: none; padding-left: 30px; padding-right:30px">
+	<div id="employeeDialog"
+		style="display: none; padding-left: 30px; padding-right: 30px">
 		<%@ include file="employeeForm.jsp"%>
 	</div>
 
-	<div id="inlineEmployeeDialog">
+	<button class="btn btn-primary" id="add-employee">Add Employee</button>
+	<div id="inlineEmployeeDialog" style="display: none; width: 100%;">
 		<%@ include file="inlineEmployeeForm.jsp"%>
 	</div>
 
-	<fieldset>
-		<legend></legend>
-	</fieldset>
-
 	<br>
-	<div style="margin: 0 auto;">
+	<div style="display:block;" id="employee-list-container">
 
-		<p style="font-size: 21px; color: #333;">
-		
-			List Of Employees
-		</p>
-		
-		<table class="table table-condensed table-striped table-bordered" id="employee-table">
+		<p style="font-size: 21px; color: #333;">List Of Employees</p>
+
+		<table class="table table-condensed table-striped table-bordered"
+			id="employee-table">
 			<thead>
 				<tr>
 					<th width="5%">S.N</th>
@@ -48,7 +44,8 @@
 					varStatus="loopCounter">
 					<tr>
 						<td><c:out value="${loopCounter.count}" /></td>
-						<td><c:out value="${employee.firstName}" /> <c:out value="${employee.lastName}" /></td>
+						<td><c:out value="${employee.firstName}" /> <c:out
+								value="${employee.lastName}" /></td>
 						<td><c:out value="${employee.email}" /></td>
 						<td><c:out value="${employee.salary}" /></td>
 
@@ -84,11 +81,17 @@
 		
 		
 		 $('#employee-table').dataTable();
+		 
+		 $('#add-employee').click(function(){
+			 
+			 $('#inlineEmployeeDialog').slideToggle();
+			 $('#employee-list-container').slideToggle();
+		 });
 	});
 	
 	
 	</script>
-	
+
 	<!--  It is advised to put the <script> tags at the end of the document body so they don't block rendering of the page -->
 	<%-- <script type="text/javascript"
 		src='<c:url value="/web-resources/js/lib/jquery-1.10.2.js"/>'></script> --%>
@@ -101,7 +104,7 @@
 
 	<script type="text/javascript"
 		src='<c:url value="/web-resources/bootstrap3-dialog/js/bootstrap-dialog.js"/>'></script>
-		
+
 	<script type="text/javascript"
 		src='<c:url value="/web-resources/js/common.js"/>'></script>
 </body>

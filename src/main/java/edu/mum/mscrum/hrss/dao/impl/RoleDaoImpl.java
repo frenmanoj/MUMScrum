@@ -1,5 +1,9 @@
 package edu.mum.mscrum.hrss.dao.impl;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,5 +28,21 @@ public class RoleDaoImpl implements RoleDao {
 		Role role = (Role) getCurrentSession().load(Role.class, id);
 
 		return role;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public Set<Role> getRoles() {
+
+		List<Role> roles = getCurrentSession().createCriteria(Role.class)
+				.list();
+
+		Set<Role> roleSet = new HashSet<Role>();
+
+		for (Role role : roles) {
+			roleSet.add(role);
+		}
+
+		return roleSet;
 	}
 }

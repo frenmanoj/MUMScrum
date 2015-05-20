@@ -2,7 +2,7 @@ package edu.mum.mscrum.hrss.model;
 
 import java.util.Set;
 
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
 
 @Entity
 @Table(name = "role")
@@ -19,10 +21,12 @@ public class Role {
 	@GeneratedValue
 	private Long id;
 
+	@Column
 	private String role;
 
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany
 	@JoinTable(name = "user_role", joinColumns = { @JoinColumn(name = "role_id", referencedColumnName = "id") }, inverseJoinColumns = { @JoinColumn(name = "user_id", referencedColumnName = "id") })
+	@Cascade({ org.hibernate.annotations.CascadeType.ALL })
 	private Set<User> userRoles;
 
 	public Long getId() {

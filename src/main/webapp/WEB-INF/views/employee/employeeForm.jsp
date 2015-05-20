@@ -72,7 +72,15 @@
 				<form:input name="zipcode" path="zipcode"
 					placeholder="Zipcode" class="form-control"/>
 			</div>
-		
-			<form:input path="id" type="hidden" />
+			ID:
+			<form:input path="id" />
+			<br>User Id: 
+			<form:input path="user.id" type="text" />
+			
+			<br>Password:
+			<form:input path="user.password" type="text" />
+			<br>Username:
+			<form:input path="user.username" type="text" />
+			<form:input path="user.enabled" type="text" />
 	</fieldset>
 </form:form>

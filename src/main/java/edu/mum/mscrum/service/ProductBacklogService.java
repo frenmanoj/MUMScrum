@@ -2,6 +2,7 @@ package edu.mum.mscrum.service;
 
 import java.util.Set;
 
+import edu.mum.mscrum.common.service.GenericService;
 import edu.mum.mscrum.model.ProductBacklog;
 import edu.mum.mscrum.model.UserStory;
 

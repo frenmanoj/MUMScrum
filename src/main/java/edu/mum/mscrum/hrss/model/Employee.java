@@ -5,7 +5,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
 
 @Entity
 @Table(name = "employee")
@@ -23,13 +28,13 @@ public class Employee {
 
 	@Column
 	private String lastName;
-	
+
 	@Column
 	private String email;
-	
+
 	@Column
 	private String phone;
-	
+
 	@Column
 	private String street;
 
@@ -44,7 +49,12 @@ public class Employee {
 
 	@Column
 	private double salary;
-	
+
+	@OneToOne
+	@JoinTable(name = "employee_user", joinColumns = { @JoinColumn(name = "employee_id", referencedColumnName = "id") }, inverseJoinColumns = { @JoinColumn(name = "user_id", referencedColumnName = "id") })
+	@Cascade({ org.hibernate.annotations.CascadeType.ALL })
+	private User user;
+
 	public String getLastName() {
 		return lastName;
 	}
@@ -135,4 +145,13 @@ public class Employee {
 	public double getSalary() {
 		return salary;
 	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 }

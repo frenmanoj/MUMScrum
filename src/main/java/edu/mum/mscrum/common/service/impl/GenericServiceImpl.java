@@ -1,11 +1,11 @@
-package edu.mum.mscrum.service.impl;
+package edu.mum.mscrum.common.service.impl;
 
 import java.util.Set;
 
 import org.springframework.transaction.annotation.Transactional;
 
-import edu.mum.mscrum.dao.GenericDao;
-import edu.mum.mscrum.service.GenericService;
+import edu.mum.mscrum.common.dao.GenericDao;
+import edu.mum.mscrum.common.service.GenericService;
 
 @Transactional
 public abstract class GenericServiceImpl<T> implements GenericService<T> {
@@ -48,5 +48,11 @@ public abstract class GenericServiceImpl<T> implements GenericService<T> {
 	public void deleteById(Long id) {
 
 		genericDao.deleteById(id);
+	}
+	
+	@Override
+	public void update(T entity) {
+		
+		genericDao.update(entity);
 	}
 }

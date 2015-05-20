@@ -13,7 +13,7 @@
 
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
-	<context:component-scan base-package="edu.mum.mscrum.controller" />
+	<context:component-scan base-package="edu.mum.mscrum.controller,edu.mum.mscrum.hrss.controller" />
 
 	<!-- Handles HTTP GET requests for /web-resources/** by efficiently serving 
 		up static resources in the ${webappRoot}/resources/ directory -->

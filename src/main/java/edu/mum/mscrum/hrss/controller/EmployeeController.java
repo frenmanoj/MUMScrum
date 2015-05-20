@@ -1,4 +1,4 @@
-package edu.mum.mscrum.controller;
+package edu.mum.mscrum.hrss.controller;
 
 import java.util.Map;
 
@@ -11,11 +11,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import edu.mum.mscrum.hrss.model.Employee;
+import edu.mum.mscrum.hrss.model.Role;
 import edu.mum.mscrum.hrss.service.EmployeeService;
+import edu.mum.mscrum.hrss.service.RoleService;
 
 @Controller
 @RequestMapping("/employee")
 public class EmployeeController {
+
+	@Autowired
+	private RoleService roleService;
 
 	@Autowired
 	private EmployeeService employeeService;
@@ -25,6 +30,7 @@ public class EmployeeController {
 
 		map.put("employee", new Employee());
 		map.put("employeeList", employeeService.listAll());
+		map.put("roles", roleService.getRoles());
 
 		return "/employee/listEmployees";
 	}
@@ -33,8 +39,7 @@ public class EmployeeController {
 	public String getEmployee(@PathVariable Long employeeId,
 			Map<String, Object> map) {
 
-		Employee employee = employeeService
-				.getById(employeeId);
+		Employee employee = employeeService.getById(employeeId);
 
 		map.put("employee", employee);
 
@@ -42,11 +47,25 @@ public class EmployeeController {
 	}
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String saveEmployee(
-			@ModelAttribute("employee") Employee employee,
+	public String saveEmployee(@ModelAttribute("employee") Employee employee,
 			BindingResult result) {
 
+		System.out.println(employee.getUser().getUsername());
+		System.out.println("Employee Id: " + employee.getId());
+		System.out.println("User Id: " + employee.getUser().getId());
+
+		String roleId = employee.getUser().getRoleId();
+
+		Role role = roleService.getRole(Long.valueOf(roleId));
+
+		employee.getUser().getRoles().add(role);
+
 		employeeService.save(employee);
+
+		System.out.println(":::: AFTER :::");
+		System.out.println(employee.getUser().getUsername());
+		System.out.println("Employee Id: " + employee.getId());
+		System.out.println("User Id: " + employee.getUser().getId());
 
 		/*
 		 * Note that there is no slash "/" right after "redirect:" So, it

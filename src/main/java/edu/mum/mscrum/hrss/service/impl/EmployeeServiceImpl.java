@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import edu.mum.mscrum.common.service.impl.GenericServiceImpl;
 import edu.mum.mscrum.hrss.dao.EmployeeDao;
 import edu.mum.mscrum.hrss.model.Employee;
 import edu.mum.mscrum.hrss.service.EmployeeService;
-import edu.mum.mscrum.service.impl.GenericServiceImpl;
 
 @Service
 @Transactional

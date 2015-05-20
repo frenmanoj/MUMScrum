@@ -5,6 +5,7 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import edu.mum.mscrum.common.service.impl.GenericServiceImpl;
 import edu.mum.mscrum.dao.ReleaseDao;
 import edu.mum.mscrum.model.Release;
 import edu.mum.mscrum.model.UserStory;

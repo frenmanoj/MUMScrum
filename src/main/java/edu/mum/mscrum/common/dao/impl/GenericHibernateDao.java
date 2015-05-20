@@ -1,4 +1,4 @@
-package edu.mum.mscrum.dao.impl;
+package edu.mum.mscrum.common.dao.impl;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.HashSet;
@@ -10,7 +10,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import edu.mum.mscrum.dao.GenericDao;
+import edu.mum.mscrum.common.dao.GenericDao;
 
 @SuppressWarnings("unchecked")
 public class GenericHibernateDao<T> implements GenericDao<T> {
@@ -82,5 +82,12 @@ public class GenericHibernateDao<T> implements GenericDao<T> {
 		T entity = getById(id);
 
 		delete(entity);
+	}
+
+	@Override
+	public void update(T entity) {
+
+		getSession().update(entity);
+
 	}
 }

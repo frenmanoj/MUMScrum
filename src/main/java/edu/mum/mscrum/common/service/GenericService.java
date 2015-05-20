@@ -1,9 +1,8 @@
-package edu.mum.mscrum.dao;
+package edu.mum.mscrum.common.service;
 
-import java.util.List;
 import java.util.Set;
 
-public interface GenericDao<T> {
+public interface GenericService<T> {
 
 	public T getById(Long id);
 
@@ -14,4 +13,6 @@ public interface GenericDao<T> {
 	public void delete(T entity);
 
 	public void deleteById(Long id);
+
+	public void update(T entity);
 }

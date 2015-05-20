@@ -5,6 +5,7 @@ import java.util.Set;
 
 import org.springframework.stereotype.Repository;
 
+import edu.mum.mscrum.common.dao.impl.GenericHibernateDao;
 import edu.mum.mscrum.dao.ReleaseDao;
 import edu.mum.mscrum.model.Release;
 import edu.mum.mscrum.model.UserStory;

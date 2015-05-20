@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import edu.mum.mscrum.common.service.impl.GenericServiceImpl;
 import edu.mum.mscrum.dao.ProductBacklogDao;
 import edu.mum.mscrum.model.ProductBacklog;
 import edu.mum.mscrum.model.UserStory;
