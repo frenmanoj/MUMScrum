@@ -47,14 +47,42 @@ function confirmDelete(anchorElem, message) {
 		BootstrapDialog.confirm({
 			title : 'Confirmation!',
 			message : '' + message,
-			closable: true,
+			closable : true,
+			btnOKClass : 'btn-primary',
 			callback : function(result) {
+
 				
 				if (result) {
+					
 					window.location.href = $(anchorElem).attr('href');
 				}
+				
 			}
 		});
 	});
+}
 
+function showAlert(message, title) {
+
+	if (!title) {
+
+		title = "Message";
+	}
+
+	BootstrapDialog.show({
+		title : title,
+		message : message,
+		buttons : [ {
+			label : 'Ok',
+			action : function(dialog) {
+				dialog.close();
+			}
+		} ]
+	});
+
+}
+
+function resetDialog(form) {
+
+	form.find("input").val("");
 }

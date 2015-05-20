@@ -16,7 +16,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
 
 @Entity
 @Table(name = "release_backlog")
@@ -45,15 +44,17 @@ public class Release {
 		this.productBacklog = productBacklog;
 	}
 
-	@OneToMany(mappedBy = "releaseBacklog", fetch = FetchType.EAGER)
-	@Cascade({ CascadeType.ALL })
+	@OneToMany(mappedBy = "releaseBacklog", fetch = FetchType.EAGER, orphanRemoval = true)
+	@Cascade({ org.hibernate.annotations.CascadeType.MERGE,
+			org.hibernate.annotations.CascadeType.SAVE_UPDATE })
 	public Set<UserStory> getUserStories() {
 
 		return userStories;
 	}
 
-	@OneToMany(mappedBy = "releaseBacklog", fetch = FetchType.EAGER)
-	@Cascade({ CascadeType.ALL })
+	@OneToMany(mappedBy = "releaseBacklog", fetch = FetchType.EAGER, orphanRemoval = true)
+	@Cascade({ org.hibernate.annotations.CascadeType.MERGE,
+			org.hibernate.annotations.CascadeType.SAVE_UPDATE })
 	public Set<Sprint> getSprints() {
 		return sprints;
 	}

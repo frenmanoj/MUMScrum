@@ -42,7 +42,7 @@ public class ProductBacklog {
 		return userStories;
 	}
 
-	@OneToMany(mappedBy = "productBacklog", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "productBacklog", fetch = FetchType.EAGER, orphanRemoval = true)
 	@Cascade({ CascadeType.ALL })
 	public Set<Release> getReleases() {
 

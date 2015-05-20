@@ -11,7 +11,7 @@
 
 	<%@ include file="../common/header.jsp"%>
 
-	<div id="productBacklogDialog" style="display: none; padding-left: 30px; padding-right:30px">
+	<div id="productBacklogDialog" style="display: none;">
 		<%@ include file="productBacklogForm.jsp"%>
 	</div>
 
@@ -26,12 +26,11 @@
 	<br>
 
 
-	<div style="margin: 0 auto; ">
-		<p style="font-size: 21px; color: #333;">
-
-			List Of Product Backlogs
+	<div style="margin: 0 auto;">
+		<p style="font-size: 21px; color: #333;">List Of Product Backlogs
 		</p>
-		<table class="table table-condensed table-striped table-bordered" id="product-table">
+		<table class="table table-condensed table-striped table-bordered"
+			id="product-table">
 			<thead>
 				<tr>
 					<th width="5%">S.N</th>
@@ -57,8 +56,7 @@
 									Edit
 								</button>
 
-								<a class="btn btn-primary btn-sm"
-									onclick="return confirm('Are you sure you want to delete this productBacklog?');"
+								<a id="delete-confirm" class="btn btn-primary btn-sm"
 									href="delete/${productBacklog.id}"> <span
 									class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 									Delete
@@ -74,21 +72,20 @@
 
 	<%@ include file="../common/footer.jsp"%>
 
-
 	<script type="text/javascript">
-	
 	
 	$(document).ready(function(){
 		
-		
 		 $('#product-table').dataTable();
+		
+		 confirmDelete( $("#delete-confirm"), "Are you sure you want to delete this productBacklog?");
 	});
 	
 	
 	</script>
 
 	<!--  It is advised to put the <script> tags at the end of the document body so they don't block rendering of the page -->
-		
+
 	<script type="text/javascript"
 		src='<c:url value="/web-resources/js/js-for-listProductBacklogs.js"/>'></script>
 </body>

@@ -1,61 +1,25 @@
-function addProductBacklog() {
-	$('#productBacklogDialog').dialog("option", "title", 'Add ProductBacklog');
-	$('#productBacklogDialog').dialog('open');
-}
-
 function editProductBacklog(id) {
 
 	$.get("get/" + id, function(result) {
 
-		$("#productBacklogDialog").html(result);
+		BootstrapDialog.show({
+			title : 'Edit Product Backlog',
+			message : $(result),
+			buttons : [ {
+				label : 'Cancel',
+				action : function(dialogRef) {
 
-		$('#productBacklogDialog').dialog("option", "title",
-				'Edit ProductBacklog');
+					resetDialog($('#productBacklogForm'));
+					dialogRef.close();
+				}
+			}, {
+				label : 'Save',
+				cssClass : 'btn-primary',
+				action : function(dialogRef) {
 
-		$("#productBacklogDialog").dialog('open');
-
-		initializeDatePicker();
+					$('#productBacklogForm').submit();
+				}
+			} ]
+		});
 	});
 }
-
-function initializeDatePicker() {
-	$(".datepicker").datepicker({
-		dateFormat : "yy-mm-dd",
-		changeMonth : true,
-		changeYear : true,
-		showButtonPanel : true
-	});
-}
-
-function resetDialog(form) {
-
-	form.find("input").val("");
-}
-
-$(document).ready(function() {
-
-	$('#productBacklogDialog').dialog({
-
-		autoOpen : false,
-		position : 'center',
-		modal : true,
-		resizable : false,
-		width : 460,
-		buttons : {
-			"Save" : function() {
-				$('#productBacklogForm').submit();
-			},
-			"Cancel" : function() {
-				$(this).dialog('close');
-			}
-		},
-		close : function() {
-
-			resetDialog($('#productBacklogForm'));
-
-			$(this).dialog('close');
-		}
-	});
-
-	initializeDatePicker();
-});

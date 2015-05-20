@@ -40,11 +40,10 @@
 						<td>${userStory.description}</td>
 						<td>${userStory.estimatedDevHours}</td>
 						<td>${userStory.remainingDevHours}</td>
-						<td><a class="btn btn-primary btn-sm"
-							onclick="return confirm('Are you sure you want to unassign this user story from the release?');"
+						<td><a id="delete-confirm" class="btn btn-primary btn-sm"
 							href="delete/${userStory.id}"> <span
 								class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-								Un-assign
+								Remove
 						</a></td>
 					</tr>
 				</c:forEach>
@@ -57,6 +56,8 @@
 		$(document).ready(function() {
 
 			$('#user-stories-table').dataTable();
+			
+			confirmDelete( $("#delete-confirm"), "Are you sure you want to unassign this user story from the release?");
 		});
 	</script>
 

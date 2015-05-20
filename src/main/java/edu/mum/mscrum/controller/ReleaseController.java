@@ -18,6 +18,7 @@ import edu.mum.mscrum.model.Release;
 import edu.mum.mscrum.model.UserStory;
 import edu.mum.mscrum.service.ProductBacklogService;
 import edu.mum.mscrum.service.ReleaseService;
+import edu.mum.mscrum.service.SprintService;
 import edu.mum.mscrum.service.UserStoryService;
 
 @Controller
@@ -26,6 +27,9 @@ public class ReleaseController {
 
 	@Autowired
 	private UserStoryService userStoryService;
+
+	@Autowired
+	private SprintService sprintService;
 
 	@Autowired
 	private ReleaseService releaseBacklogService;
@@ -77,8 +81,16 @@ public class ReleaseController {
 	@RequestMapping("/delete/{releaseBacklogId}")
 	public String deleteReleaseBacklog(@PathVariable("releaseBacklogId") Long id) {
 
-		releaseBacklogService.deleteById(id);
+		Release release = releaseBacklogService.getById(id);
 
+		ProductBacklog productBacklog = release.getProductBacklog();
+
+		productBacklog.getReleases().remove(release);
+
+		releaseBacklogService.delete(release); // OR
+												// productBacklogService.save(productBacklog);
+
+		// orphanRemoval = true OR releaseBacklogService.delete(release);
 		/*
 		 * redirects to the path relative to the current path
 		 */
@@ -88,7 +100,7 @@ public class ReleaseController {
 		 * Note that there is the slash "/" right after "redirect:" So, it
 		 * redirects to the path relative to the project root path
 		 */
-		return "redirect:/releaseBacklog/listReleaseBacklog";
+		return "redirect:../";
 	}
 
 	@RequestMapping("/{releaseId}/details")

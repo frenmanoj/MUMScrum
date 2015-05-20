@@ -11,28 +11,33 @@
 	<form action="selectRelease" method="post"
 		onsubmit="return validateInputs();">
 
-		<select id="select-product" name="productBacklogId"
-			onchange="listReleases(this);">
+		<div class="col-md-3">
+			<select class="form-control" id="select-product" name="productBacklogId"
+				onchange="listReleases(this);">
 
-			<option value="0">Select Product Backlog</option>
-			<c:forEach items="${productBacklogList}" var="productBacklog">
-				<option value="${productBacklog.id}">${productBacklog.title}</option>
-			</c:forEach>
+				<option value="0">Select Product Backlog</option>
+				<c:forEach items="${productBacklogList}" var="productBacklog">
+					<option value="${productBacklog.id}">${productBacklog.title}</option>
+				</c:forEach>
 
-		</select>
+			</select>
 
-		<div><br></div>	
+		</div>
 
-		<select id="select-release" name="releaseBacklogId" disabled>
+		<div class="col-md-3">
 
-			<option value="0">Select Release Backlog</option>
-		</select>
+			<select class="form-control" id="select-release" name="releaseBacklogId" disabled>
 
-		<div><br></div>	
+				<option value="0">Select Release Backlog</option>
+			</select>
+		</div>
 
+		<div class="col-md-6">
+			<input type="submit" value="View Sprints" class="btn btn-primary" />
+		</div>
+		
 		<input type="hidden" name="${_csrf.parameterName}"
-			value="${_csrf.token}" /> <input type="submit" value="Submit"
-			class="btn btn-primary" />
+			value="${_csrf.token}" />
 	</form>
 
 	<%@ include file="../common/footer.jsp"%>
@@ -40,9 +45,17 @@
 	<script type="text/javascript">
 		function listReleases(selectedProduct) {
 
-			var productId = $(selectedProduct).val();
-
 			$('#select-release').find('option:not(:first)').remove();
+
+			var productId = $(selectedProduct).val();
+			
+			if ( productId == "0") {
+				
+				$('#select-release').prop("disabled", true);
+				
+				return;
+			}
+
 
 			$.get("getReleases/" + productId, function(releaseData) {
 
@@ -64,15 +77,15 @@
 
 			if (selectedProduct == "0") {
 
-				alert("Please select a product!");
+				showAlert("Please select a product!");
 				return false;
 			}
 
 			var selectedRelease = $("#select-release").val();
 
-			if ( selectedRelease == "0") {
+			if (selectedRelease == "0") {
 
-				alert("Please select a release!");
+				showAlert("Please select a release!");
 				return false;
 			}
 

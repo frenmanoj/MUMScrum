@@ -5,7 +5,7 @@
 <form:form class="form-horizontal" action="save" method="post"
 	commandName="employee" onsubmit="return validateForm();">
 
-	<div class="col-md-8">
+	<div class="col-md-12">
 		<div class="col-md-6">
 			<label class="control-label" for="firstName">First Name</label> <br>
 			<form:input name="firstName" path="firstName"

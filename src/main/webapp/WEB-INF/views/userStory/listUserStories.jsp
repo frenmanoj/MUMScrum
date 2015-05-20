@@ -3,23 +3,6 @@
 <html>
 <head>
 <title>List Of User Stories</title>
-
-<link rel="stylesheet"
-	href='<c:url value="/web-resources/css/pure-0.4.2.css"/>'>
-
-<link rel="stylesheet"
-	href='<c:url value="/web-resources/css/font-awesome-4.0.3/css/font-awesome.css"/>'>
-
-<link rel="stylesheet"
-	href='<c:url value="/web-resources/css/jquery-ui-1.10.4.custom.css"/>'>
-
-<style type="text/css">
-th {
-	text-align: left
-}
-</style>
-
-
 </head>
 
 <body>
@@ -87,21 +70,12 @@ th {
 	$(document).ready(function(){
 		
 		
-		 $('#product-table').dataTable();
+		 $('#user-story-table').dataTable();
 	});
 
 	</script>
 
-	<!--  It is advised to put the <script> tags at the end of the document body so they don't block rendering of the page -->
-	<script type="text/javascript"
-		src='<c:url value="/web-resources/js/lib/jquery-1.10.2.js"/>'></script>
-	<script type="text/javascript"
-		src='<c:url value="/web-resources/js/lib/jquery-ui-1.10.4.custom.js"/>'></script>
-	<script type="text/javascript"
-		src='<c:url value="/web-resources/js/lib/jquery.ui.datepicker.js"/>'></script>
 	<script type="text/javascript"
 		src='<c:url value="/web-resources/js/js-for-listUserStories.js"/>'></script>
-	<script type="text/javascript"
-		src='<c:url value="/web-resources/js/common.js"/>'></script>
 </body>
 </html>

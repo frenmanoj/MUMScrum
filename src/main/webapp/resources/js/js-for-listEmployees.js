@@ -1,4 +1,3 @@
-
 function editEmployee(id) {
 
 	$.get("get/" + id, function(result) {
@@ -7,17 +6,18 @@ function editEmployee(id) {
 			title : 'Edit Employee',
 			message : $(result),
 			buttons : [ {
-				label : 'Save',
-				action : function(dialogRef) {
-
-					$('#employeeForm').submit();
-				}
-			}, {
 				label : 'Cancel',
 				action : function(dialogRef) {
 
 					resetDialog($('#employeeForm'));
 					dialogRef.close();
+				}
+			}, {
+				label : 'Save',
+				cssClass : 'btn-primary',
+				action : function(dialogRef) {
+
+					$('#employeeForm').submit();
 				}
 			} ]
 		});
@@ -25,7 +25,3 @@ function editEmployee(id) {
 	});
 }
 
-function resetDialog(form) {
-
-	form.find("input").val("");
-}

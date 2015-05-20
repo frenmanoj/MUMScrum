@@ -1,61 +1,27 @@
-function addSprint() {
-	$('#sprintDialog').dialog("option", "title", 'Add Sprint');
-	$('#sprintDialog').dialog('open');
-}
 
 function editSprint(id) {
 
 	$.get("get/" + id, function(result) {
 
-		$("#sprintDialog").html(result);
+		BootstrapDialog.show({
+			title : 'Edit Sprint',
+			message : $(result),
+			buttons : [ {
+				label : 'Cancel',
+				action : function(dialogRef) {
 
-		$('#sprintDialog').dialog("option", "title",
-				'Edit Sprint');
+					resetDialog($('#sprintForm'));
+					dialogRef.close();
+				}
+			}, {
+				label : 'Save',
+				cssClass : 'btn-primary',
+				action : function(dialogRef) {
 
-		$("#sprintDialog").dialog('open');
+					$('#sprintForm').submit();
+				}
+			} ]
+		});
 
-		initializeDatePicker();
 	});
 }
-
-function initializeDatePicker() {
-	$(".datepicker").datepicker({
-		dateFormat : "yy-mm-dd",
-		changeMonth : true,
-		changeYear : true,
-		showButtonPanel : true
-	});
-}
-
-function resetDialog(form) {
-
-	form.find("input").val("");
-}
-
-$(document).ready(function() {
-
-	$('#sprintDialog').dialog({
-
-		autoOpen : false,
-		position : 'center',
-		modal : true,
-		resizable : false,
-		width : 460,
-		buttons : {
-			"Save" : function() {
-				$('#sprintForm').submit();
-			},
-			"Cancel" : function() {
-				$(this).dialog('close');
-			}
-		},
-		close : function() {
-
-			resetDialog($('#sprintForm'));
-
-			$(this).dialog('close');
-		}
-	});
-
-	initializeDatePicker();
-});

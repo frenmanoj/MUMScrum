@@ -89,7 +89,7 @@ th {
 			var atLeastOneIsChecked = $('#user-stories-table tbody :checkbox:checked').length > 0;
 
 			if ( !atLeastOneIsChecked ) {
-				alert( "No user stories selected to assign!");
+				showAlert( "No user stories selected to assign!");
 			}
 			
 			return atLeastOneIsChecked;

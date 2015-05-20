@@ -15,16 +15,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import edu.mum.mscrum.dao.BurndownDao;
-import edu.mum.mscrum.dao.impl.BurndownDaoImpl;
 import edu.mum.mscrum.model.Burndown;
 import edu.mum.mscrum.model.Release;
 import edu.mum.mscrum.model.Sprint;
 import edu.mum.mscrum.model.UserStory;
+import edu.mum.mscrum.service.BurndownService;
 import edu.mum.mscrum.service.ReleaseService;
 import edu.mum.mscrum.service.SprintService;
 import edu.mum.mscrum.service.UserStoryService;
-import edu.mum.mscrum.service.BurndownService;
 
 @Controller
 @RequestMapping("/productBacklog/{productBacklogId}/releases/{releaseBacklogId}/sprints")
@@ -45,7 +43,7 @@ public class SprintController {
 		Release release = releaseService.getById(releaseBacklogId);
 		map.put("release", release);
 		map.put("sprint", new Sprint());
-		map.put("sprintList", sprintService.listAll());
+		map.put("sprintList", release.getSprints());
 
 		return "/sprint/listSprints";
 	}
@@ -128,7 +126,17 @@ public class SprintController {
 	@RequestMapping("/delete/{sprintId}")
 	public String deleteSprint(@PathVariable("sprintId") Long id) {
 
-		sprintService.deleteById(id);
+		Sprint sprint = sprintService.getById(id);
+
+		Release release = sprint.getReleaseBacklog();
+
+		for (UserStory userStory : sprint.getUserStories()) {
+			userStory.setSprint(null);
+		}
+
+		release.getSprints().remove(sprint);
+
+		releaseService.save(release);
 
 		/*
 		 * redirects to the path relative to the current path
@@ -139,7 +147,7 @@ public class SprintController {
 		 * Note that there is the slash "/" right after "redirect:" So, it
 		 * redirects to the path relative to the project root path
 		 */
-		return "redirect:listSprints";
+		return "redirect:../";
 	}
 
 	@RequestMapping(value = "/{sprintId}/userStories/addUserStories", method = RequestMethod.POST)
@@ -179,24 +187,25 @@ public class SprintController {
 	private BurndownService burndownService;
 
 	@RequestMapping("/{sprintId}/viewBurndown/")
-	public String showBurnDownChart(@PathVariable Long sprintId, Map<String, Object> map) {
+	public String showBurnDownChart(@PathVariable Long sprintId,
+			Map<String, Object> map) {
 		Sprint sprint = sprintService.getById(sprintId);
 		map.put("sprint", sprint);
 		return "viewBurndown/viewBurndown";
 	}
 
 	@RequestMapping("/{sprintId}/viewBurndown/getData")
-	public @ResponseBody Map<Integer, Integer> getBurnDownChartData(@PathVariable("sprintId") Long sprintId) {
-		
+	public @ResponseBody Map<Integer, Integer> getBurnDownChartData(
+			@PathVariable("sprintId") Long sprintId) {
+
 		Map<Integer, Integer> chartData = new LinkedHashMap<Integer, Integer>();
-		Sprint sprint =  sprintService.getById(sprintId);		
-	
-		for(Burndown bd:sprint.getBurndownlists())
-		{
+		Sprint sprint = sprintService.getById(sprintId);
+
+		for (Burndown bd : sprint.getBurndownlists()) {
 			chartData.put(bd.getDay(), bd.getRemainingWork());
-			
+
 		}
-		
+
 		return chartData;
 	}
 }

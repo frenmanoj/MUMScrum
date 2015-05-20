@@ -7,21 +7,22 @@
 
 	<fieldset>
 		<legend></legend>
+		<div class="col-md-12">
+			<div class="form-group">
+				<label class="control-label" for="estimatedDevHours">Estimated
+					Hours</label>
+				<form:input id="estimatedDevHours" path="estimatedDevHours"
+					class="form-control" />
+			</div>
 
-		<div class="form-group">
-			<label class="control-label" for="estimatedDevHours">Estimated
-				Hours</label>
-			<form:input id="estimatedDevHours" path="estimatedDevHours"
-				class="form-control" />
+			<div class="form-group">
+				<label class="control-label" for="remainingDevHours">Remaining
+					Hours</label>
+				<form:input id="remainingDevHours" path="remainingDevHours"
+					class="form-control" />
+			</div>
+
+			<form:input path="id" type="hidden" />
 		</div>
-
-		<div class="form-group">
-			<label class="control-label" for="remainingDevHours">Remaining
-				Hours</label>
-			<form:input id="remainingDevHours" path="remainingDevHours"
-				class="form-control" />
-		</div>
-
-		<form:input path="id" type="hidden" />
 	</fieldset>
 </form:form>
